@@ -1,0 +1,57 @@
+<div >
+  <div class="col-md-12 col-lg-12">
+      <app-card [title]=""[cardOptionBlock]="true">
+          <h5>Attendance (Absentees By date)</h5>
+          <hr>
+        
+          <div ngbDropdown class="dropdown-success">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Attendance</button>
+              <div ngbDropdownMenu>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">1</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">2</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">3</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">4</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">5</a>
+              </div>
+            </div>
+         
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+            <div ngbDropdown class="dropdown-info">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Reports</button>
+              <div ngbDropdownMenu>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Fees Reports</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Profit and Loss</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Balance Sheet</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Trial Balance</a>
+              </div>
+            </div>
+
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp; 
+
+            <div ngbDropdown class="dropdown-warning">
+                <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Settings</button>
+                <div ngbDropdownMenu>
+                  <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Attendance/attendance-setup/']"
+                  href="javascript:">Attendance Setup</a>
+
+                  <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Attendance/report-setup/']"
+                  href="javascript:">Reports Setup</a>
+
+                  <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Attendance/practical-classes/']"
+                  href="javascript:">Practical Classes Batch</a>
+
+                </div>
+              </div> 
+
+
+
+    </app-card>
+  </div>
+</div>

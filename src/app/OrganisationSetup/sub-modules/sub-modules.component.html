@@ -1,0 +1,57 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="row">
+  <div class="col-sm-7">
+    <app-card >
+      <div style="text-align: center">
+      <h3>{{pageTitle}}</h3>
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <h5>Module  :</h5> 
+    <div class="col-sm-8 col-xl-8 m-b-30">
+        <select name="select" 
+        [(ngModel)]="newsubmodule.ModuleId" #Name="ngModel" required>  
+            <option value="-1">---Select Module---</option>
+            <option value="0">New Module*</option>
+            <option *ngFor="let mod of moduleList" value={{mod.Id}}>{{mod.SubModuleName}} </option> 
+    </select>
+     
+      </div>
+      <br>
+      <h5>Sub Module Name :</h5>
+      &nbsp;
+      &nbsp;
+      <form>
+          &nbsp;
+          <input type="text" size="17" [(ngModel)]="newsubmodule.SubModuleName" name="SubModuleName"><br>
+        </form>
+    </div>
+    <br>
+    <br>
+    
+      <div style="text-align:center">
+          <button type="button" class="btn btn-primary" (click)="updatesubmodule()">{{buttonText}}</button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger" (click)="clearForm()">Cancel</button>
+      
+      </div>
+    
+    </app-card>
+  </div>
+
+  <div class="col-sm-5">
+    <app-card [title]="submoduletable" [classHeader]="true">
+        <div style="text-align: center">
+          <ng2-smart-table [settings]="settings" 
+          [source]="submodulesForGrid" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+          (createConfirm)="onCreateConfirm($event)"
+          (custom)="onCustomAction($event)"></ng2-smart-table>
+        </div>
+    </app-card>
+  </div>
+</div>

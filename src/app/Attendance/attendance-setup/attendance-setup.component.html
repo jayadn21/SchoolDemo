@@ -1,0 +1,58 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+    <app-card [title]=""[cardOptionBlock]="true">
+        <div style="text-align: center">
+        <h5>Accounting (Fees Management)</h5>
+        </div>
+    </app-card>
+  </div>
+<div class="row"> 
+   <div class="col-sm-6">
+    <app-card >
+      <div style="text-align: center">
+      <h3>{{pageTitle}}</h3>
+    </div>
+    <br>
+    <br>
+
+     <div class="row">
+        <select style="width:500px;" name="class" placeholder="Select one"
+        [(ngModel)]="attendance.ClassSectionMediumId" required>
+            <option value="" disabled selected>Select Facility</option>
+            
+              <option *ngFor="let cls of classessections" value={{cls.Id}}>{{cls.Name}} </option>
+        </select>
+    </div>
+    <br>
+    <div class="row">
+      <select style="width:500px;" name="AttendanceType" placeholder="Select one"
+      [(ngModel)]="attendance.AttendanceType"
+            #AttendanceType="ngModel" required>
+            <option value="Regular">Regular</option>
+            <option value="Session Wise">Session Wise</option>
+      </select>
+    </div> 
+    
+    <br>
+    <br>
+      <div style="text-align:center">
+          <button type="button" class="btn btn-primary" (click)="saveattendance()">{{buttonText}}</button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger" >Cancel</button>
+      
+      </div>
+    </app-card>
+  </div> 
+
+  <div class="col-sm-6">
+    <app-card [title]="facilityfees" [classHeader]="true">
+        <div style="text-align: center">
+          <ng2-smart-table [settings]="settings" 
+          [source]="attendances" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+          (createConfirm)="onCreateConfirm($event)"
+          (custom)="onCustomAction($event)"></ng2-smart-table>
+        </div>
+    </app-card>
+  </div>
+</div>

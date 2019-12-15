@@ -1,0 +1,37 @@
+<p>
+  student-catogery works!
+</p>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card>
+      <div class="mt-3">
+        <h5>Student Catogery</h5>
+        <hr>
+      </div>
+      <div style="text-align: center">
+        <div class="mt-3">
+          <div class="col-xl-12">
+            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="Studentcatogery.Name" #Name="ngModel"
+              required>
+          </div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" id="saveStudentCatogery" (click)="saveStudentCatogery()"
+          (click)="cleardata()" type="submit">{{Buttontext}}</button>
+        &nbsp;&nbsp;&nbsp; &nbsp;
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card [title]="StudentCatogery">
+      <div class="mt-3">
+        <h5>Student Catogery</h5>
+        <hr>
+      </div>
+      <ng2-smart-table [settings]="settings" [source]="studentCatogery" (deleteConfirm)="onDeleteConfirm($event)"
+        (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+        (custom)="onCustomAction($event)">
+      </ng2-smart-table>
+    </app-card>
+  </div>
+</div>

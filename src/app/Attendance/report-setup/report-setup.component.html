@@ -1,0 +1,186 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card [title]="Vendors" [classHeader]="true">
+        <table>
+        <tbody>
+            <tr *ngFor="let rep of reportForGrid">
+                <td>{{rep.Name}}</td> 
+                <td><ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="rep.Selected"
+                  #Notification="ngModel" required></ui-switch></td>
+            </tr>
+        </tbody>
+      </table>  
+      <h5>Add New Report</h5>
+      <hr>
+      <p>Enter the basic values in percentage for attendance reports</p>
+      <br>
+      <div>
+        <font color="green">Excellent</font>
+      </div>
+      <input type="text" size="10" name="Excellent From" placeholder="From (%)"
+      [(ngModel)]="report.ExecellentFrom"  #Name="ngModel" required>
+      &nbsp;
+      &nbsp;
+      <input type="text" size="10" name="Excellent To" placeholder="To (%)"
+      [(ngModel)]="report.ExcellecntTo"  #Name="ngModel" required>
+      <br>
+      <br>
+      <br>
+      <div>
+        <font color="green">Good</font>
+      </div>
+      <input type="text" size="10" name="Good From" placeholder="From (%)"
+      [(ngModel)]="report.GoodFrom"  #Name="ngModel" required>
+      &nbsp;
+      &nbsp;
+      <input type="text" size="10" name="Good To" placeholder="To (%)"
+      [(ngModel)]="report.GoodTo"  #Name="ngModel" required>
+      <br>
+      <br>
+      <br>
+      <div>
+          <font color="orange">Satisfactory</font>
+          </div>
+          <input type="text" size="10" name="Satisfactory From" placeholder="From (%)"
+          [(ngModel)]="report.SatisfactoryFrom"  #Name="ngModel" required>
+          &nbsp;
+          &nbsp;
+          <input type="text" size="10" name="Satisfactory To" placeholder="To (%)"
+          [(ngModel)]="report.SatisfactoryTo"  #Name="ngModel" required>
+          <br>
+          <br>
+          <br>
+          <div>
+            <font color="red">Poor</font>
+          </div>
+          <input type="text" size="10" name="Poor From" placeholder="From (%)"
+          [(ngModel)]="report.PoorFrom"  #Name="ngModel" required>
+          &nbsp;
+          &nbsp;
+          <input type="text" size="10" name="Poor To" placeholder="To (%)"
+          [(ngModel)]="report.PoorTo"  #Name="ngModel" required>
+          <br>
+          <br>
+          <br>
+          <div>
+            <font color="red">Not Eligiable</font>
+          </div>
+          <input type="text" size="10" name="Not Eligiable From" placeholder="From (%)"
+          [(ngModel)]="report.NotEligibleFrom"  #Name="ngModel" required>
+          &nbsp;
+          &nbsp;
+          <input type="text" size="10" name="Not Eligiable To" placeholder="To (%)"
+          [(ngModel)]="report.NotEligibleTo"  #Name="ngModel" required> 
+          <br>
+          <br>
+          <br>
+       <button type="button" class="btn btn-primary"
+            id="saveReports"
+            (click)="saveReport()" 
+            (click)= "ClearData()" type="submit" >Add New</button>
+    </app-card>
+  </div>
+
+  <div class="col-sm-6">
+
+    <jw-modal id="custom-modal-2" >
+      <div class="app-modal-header">
+        <h4 class="modal-title"><b>{{modalButtonTextClass}}</b>
+          <button type="button" class="close basic-close" (click)="closeModal1('custom-modal-2');">
+            <span aria-hidden="true">&times;</span>
+          </button></h4>
+          <div style="text-align: center;">
+            <h5>Class Name</h5>
+            <p>{{report.Name}}</p>
+          
+      <hr>
+      <p>Enter the basic values in percentage for attendance reports</p>
+      <br>
+      <div>
+          <font color="green">Excellent</font>
+        </div>
+        <input type="text" size="10" name="Excellent From" placeholder="From (%)"
+        [(ngModel)]="report.ExecellentFrom"  #Name="ngModel" required>
+        &nbsp;
+        &nbsp;
+        <input type="text" size="10" name="Excellent To" placeholder="To (%)"
+        [(ngModel)]="report.ExcellecntTo"  #Name="ngModel" required>
+        <br>
+        <br>
+        <br>
+        <div>
+          <font color="green">Good</font>
+        </div>
+        <input type="text" size="10" name="Good From" placeholder="From (%)"
+        [(ngModel)]="report.GoodFrom"  #Name="ngModel" required>
+        &nbsp;
+        &nbsp;
+        <input type="text" size="10" name="Good To" placeholder="To (%)"
+        [(ngModel)]="report.GoodTo"  #Name="ngModel" required>
+        <br>
+        <br>
+        <br>
+        <div>
+            <font color="orange">Satisfactory</font>
+            </div>
+            <input type="text" size="10" name="Satisfactory From" placeholder="From (%)"
+            [(ngModel)]="report.SatisfactoryFrom"  #Name="ngModel" required>
+            &nbsp;
+            &nbsp;
+            <input type="text" size="10" name="Satisfactory To" placeholder="To (%)"
+            [(ngModel)]="report.SatisfactoryTo"  #Name="ngModel" required>
+            <br>
+            <br>
+            <br>
+            <div>
+              <font color="red">Poor</font>
+            </div>
+            <input type="text" size="10" name="Poor From" placeholder="From (%)"
+            [(ngModel)]="report.PoorFrom"  #Name="ngModel" required>
+            &nbsp;
+            &nbsp;
+            <input type="text" size="10" name="Poor To" placeholder="To (%)"
+            [(ngModel)]="report.PoorTo"  #Name="ngModel" required>
+            <br>
+            <br>
+            <br>
+            <div>
+              <font color="red">Not Eligiable</font>
+            </div>
+            <input type="text" size="10" name="Not Eligiable From" placeholder="From (%)"
+            [(ngModel)]="report.NotEligibleFrom"  #Name="ngModel" required>
+            &nbsp;
+            &nbsp;
+            <input type="text" size="10" name="Not Eligiable To" placeholder="To (%)"
+            [(ngModel)]="report.NotEligibleTo"  #Name="ngModel" required>  
+          <br>
+          <br>
+          <br>
+       <button type="button" class="btn btn-primary"
+            id="updateReports"
+            (click)="updateReport()">{{modalButtonText}}</button>
+
+
+        
+
+
+        &nbsp;
+        &nbsp;
+        <button type="button" id="closenewclass" class="btn btn-danger"
+          (click)="closeModal1('custom-modal-2')">Cancel</button>
+        </div>
+      </div>
+    </jw-modal>
+    <app-card [title]="Vendorslist" [classHeader]="true">
+      <h5>Class</h5>
+      <hr>
+
+      <ng2-smart-table [settings]="settings" [source]="reports" (deleteConfirm)="onDeleteConfirm($event)"
+        (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+        (custom)="onReportCustomAction($event)">
+
+      </ng2-smart-table>
+    </app-card>
+  </div>
+</div>

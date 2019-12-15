@@ -1,0 +1,242 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+  <div class="row">
+    <div class="col-sm-4">
+        <div>
+            <button class="btn btn-success" (click)="OpenClassModal('custom-modal-2')">Add new</button>
+          </div>
+          <jw-modal id="custom-modal-2">
+            <div class="app-modal-header">
+              <div style="text-align:center;">
+                <h4 class="modal-title"><b>{{modalButtonTextClass}}</b>
+                  <button type="button" class="close basic-close"
+                    (click)="closeModal1('custom-modal-2');">
+                    <span aria-hidden="true">&times;</span>
+                  </button></h4>
+                <hr>
+
+              </div>
+              <div style="text-align: center">
+                  <input type="text"  name="ClassName" placeholder="Name"
+                  [(ngModel)]="class.Name"  #Name="ngModel" required>
+                
+                  <br>
+                  <br>
+                  <br>
+                  
+                  <button class="text-left" id="Saveclass"
+                  (click)="Saveclass('custom-modal-2')" type="submit" 
+                  class="btn btn-primary">{{modalButtonText}}</button>
+
+                  
+                  &nbsp;
+                  &nbsp;
+                  <button  type="button" id="closenewclass" class="btn btn-danger"
+                      (click)="closeModal1('custom-modal-2')" >Cancel</button>
+                    
+                  </div>
+            </div>
+              </jw-modal>
+        
+      <br>
+      <app-card [title]="Class" [classHeader]="true">
+          <h5>Class</h5>
+          <hr>
+          <ng2-smart-table [settings]="settings" [source]="classes" 
+           (deleteConfirm)="onDeleteConfirm($event)"
+            (editConfirm)="onSaveConfirm($event)" 
+            (createConfirm)="onCreateConfirm($event)"
+            (custom)="onsaveClassCustomAction($event)">
+          </ng2-smart-table>
+      </app-card>
+    </div>
+
+      <!-- Section card starts -->
+      <div class="col-sm-4">
+          <div>
+              <button class="btn btn-success" (click)="OpenClassModal1('custom-modal-3')">Add new</button>
+            </div>
+            <jw-modal id="custom-modal-3">
+              <div class="app-modal-header">
+                <div style="text-align:center;">
+                  <h4 class="modal-title"><b>{{modalButtonTextSection}}</b>
+                    <button type="button" class="close basic-close"
+                      (click)="closeModal2('custom-modal-3');">
+                      <span aria-hidden="true">&times;</span>
+                    </button></h4>
+                  <hr>
+  
+                </div>
+                <div style="text-align: center">
+                    <input type="text"  name="SectionName" placeholder="Name"
+                    [(ngModel)]="section.SectionName"  #Name="ngModel" required>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <button class="text-left" id="Savesection"
+                    (click)="Savesection('custom-modal-3')" type="submit" 
+                    class="btn btn-primary">{{modalButtonText}}</button>
+
+                    
+                    &nbsp;
+                    &nbsp;
+                    <button  type="button" id="closenewsection" class="btn btn-danger"
+                        (click)="closeModal2('custom-modal-3')" >Cancel</button>
+                      
+                </div>
+              </div>
+                </jw-modal>
+                <br>
+        <app-card [title]="SectionName" [classHeader]="true">
+            <h5>Section</h5>
+            <hr>
+            <ng2-smart-table [settings]="Sectionsettings" [source]="sections"
+              (deleteConfirm)="onDeleteConfirmSection($event)" 
+              (editConfirm)="onSaveConfirmSection($event)"
+              (createConfirm)="onCreateConfirmSection($event)"
+              (custom)="onsectionCustomAction($event)">
+            </ng2-smart-table>
+        </app-card>
+      </div>
+      <!-- Section card ends --> 
+      
+        <div class="col-sm-4">
+            <div>
+                <button class="btn btn-success" (click)="OpenClassModal2('custom-modal-4')">Add new</button>
+              </div>
+              <jw-modal id="custom-modal-4">
+                <div class="app-modal-header">
+                  <div style="text-align:center;">
+                    <h4 class="modal-title"><b>{{modalButtonTextMedium}}</b>
+                      <button type="button" class="close basic-close"
+                        (click)="closeModal3('custom-modal-4');">
+                        <span aria-hidden="true">&times;</span>
+                      </button></h4>
+                    <hr>
+    
+                  </div>
+                  <div style="text-align: center">
+                      <input type="text"  name="MediumName" placeholder="Name"
+                      [(ngModel)]="medium.MediumName"  #Name="ngModel" required>
+                      <br>
+                      <br>
+                      <br>
+                      
+                      <button class="text-left" id="Savemedium"
+                      (click)="Savemedium('custom-modal-4')" type="submit" 
+                      class="btn btn-primary">{{modalButtonText}}</button>
+
+                      
+
+                        &nbsp;
+                        &nbsp;
+                      <button  type="button" id="closemedium" class="btn btn-danger"
+                          (click)="closeModal3('custom-modal-4')" >Cancel</button>
+                        
+                      </div>
+                </div>
+                  </jw-modal>
+           <br>
+          <app-card [title]="MediumName" [classHeader]="true">
+              <h5>Medium</h5>
+              <hr>
+            <div>
+              <ng2-smart-table [settings]="Mediumsettings" [source]="mediums"
+                (deleteConfirm)="onDeleteConfirmMedium($event)" 
+                (editConfirm)="onSaveConfirmMedium($event)"
+                (createConfirm)="onCreateConfirmMedium($event)"
+                (custom)="onmediumCustomAction($event)">
+              </ng2-smart-table>
+            </div>
+          </app-card>
+        </div>
+    </div>
+  
+
+
+<div>
+    
+    <div>
+        <button class="btn btn-success" (click)="OpenClassModal3('custom-modal-5')">Add new</button>
+      </div>
+      <jw-modal id="custom-modal-5">
+        <div class="app-modal-header">
+          <div style="text-align:center;">
+            <h4 class="modal-title"><b>{{modalButtonTextClassSection}}</b>
+              <button type="button" class="close basic-close"
+                (click)="closeModal4('custom-modal-5');">
+                <span aria-hidden="true">&times;</span>
+              </button></h4>
+            <hr>
+
+          </div>
+          <div style="text-align: center">
+                
+
+              <select name="select"
+                       [(ngModel)]="classsection.ClassId" #Name="ngModel" required>  
+                          <option value="0">--Select Class--</option>
+                          <option *ngFor="let cls of classes" value={{cls.Id}}>{{cls.Name}} </option>
+                  </select>
+                  &nbsp;
+                  &nbsp;
+                  <select name="select"
+                  [(ngModel)]="classsection.SectionId" #Name="ngModel" required>  
+                      <option value="0">--Select Section--</option>
+                      <option *ngFor="let sec of sections"  value={{sec.Id}}>{{sec.SectionName}} </option>  
+              </select>
+                    &nbsp;
+                    &nbsp;
+                    <select name="select"
+                    [(ngModel)]="classsection.MediumId" #Name="ngModel" required>  
+                        <option value="0">--Select Medium--</option>
+                        <option *ngFor="let med of mediums" value={{med.Id}}>{{med.MediumName}} </option>  
+                </select>
+                    <br>
+                    <br>
+                      
+                      <input type="text"  name="ClasssectionName" placeholder="Name"
+                      [(ngModel)]="classsection.Name"  #Name="ngModel" required>
+                      
+                      &nbsp;
+                      &nbsp;
+              
+              <button class="text-left" id="Savemedium"
+              (click)="SaveClassSection('custom-modal-5')" type="submit" 
+              class="btn btn-primary">{{modalButtonText}}</button>
+
+              
+
+                &nbsp;
+                &nbsp;
+              <button  type="button" id="closemedium" class="btn btn-danger"
+                  (click)="closeModal4('custom-modal-5')" >Cancel</button>
+                
+              </div>
+        </div>
+          </jw-modal>
+
+  
+        </div>
+
+       
+        <br>
+        
+
+<div class="row">
+<div class="col-sm-4">
+    <app-card [title]="ClassSection" [classHeader]="true">
+        <h5>Class Section</h5>
+        <hr>
+      <div>
+        <ng2-smart-table [settings]="settingsGrid " [source]="classessections"
+          (deleteConfirm)="onDeleteConfirmClassSection($event)" 
+          (editConfirm)="onSaveConfirmClassSection($event)"
+          (createConfirm)="onCreateConfirmClasssection($event)"
+          (custom)="onCustomAction($event)">
+        </ng2-smart-table>
+      </div>
+    </app-card>
+  </div>
+</div>
+

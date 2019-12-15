@@ -1,0 +1,90 @@
+<div class="col-md-12 col-lg-12">
+    <app-card [title]=""[cardOptionBlock]="true">
+        <h5>Accounting (Fees Management)</h5>
+        <hr>
+      <div ngbDropdown class="dropdown-primary">
+          <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Fees Management</button>
+          <div ngbDropdownMenu>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Statements</a>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Direct Payments</a>
+             <!-- <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>  -->
+          </div>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+        <div ngbDropdown class="dropdown-success">
+            <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Transactions</button>
+            <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/indirect-account/']"
+               href="javascript:">Indirect Income</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:"
+              [routerLink]="['/Accounting/expense/']">Expense</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Bills</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:"
+              [routerLink]="['/Accounting/internal-transaction/']">Internal Transactions</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Journal Transactions</a>
+            </div>
+          </div>
+
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+        <button class="btn btn-success ">Payroll</button>
+
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+          <div ngbDropdown class="dropdown-info">
+            <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Reports</button>
+            <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Fees Reports</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Profit and Loss</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Balance Sheet</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Trial Balance</a>
+            </div>
+          </div>
+
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+          <div ngbDropdown class="dropdown-warning">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Settings</button>
+              <div ngbDropdownMenu>
+              <div *ngFor="let menuItem of accountingMenu">
+                <a class="dropdown-item waves-light waves-effect" [routerLink]="[menuItem.ModuleName,menuItem.routerLink]"
+                 href="javascript:">{{menuItem.Name}}</a>
+                </div>
+              </div>
+            </div>
+  </app-card>
+  </div>
+
+ <div class="row">
+ <div class="col-md-12 col-lg-7">
+      <app-card>
+        <chart [type]="type1" [data]="data1" [options]="options" style="width: 100%; height: 470px;"></chart>
+      </app-card>
+    </div>
+    <div class="col-md-12 col-lg-5">
+      <app-card>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-12">
+            </div>
+          </div>
+          <google-chart [data]="donutChartData"></google-chart>
+        </div>
+      </app-card>
+    </div>
+    </div>

@@ -1,0 +1,476 @@
+<div class="page-body">
+    <ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+  <!--profile cover start-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="cover-profile">
+        <div class="profile-bg-img">
+          <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
+          <div class="card-block user-info">
+            <div class="col-md-12">
+              <div class="media-left">
+                <a href="javascript:" class="profile-image">
+                  <img class="user-img img-radius" src="assets/images/user-profile/user-img.jpg" alt="user-img">
+                </a>
+              </div>
+              <div class="media-body row">
+                <div class="col-lg-12">
+                  <div class="user-title">
+                    <h2>{{employeename}}</h2>
+                    <span class="text-white">Web designer</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="pull-right cover-btn">
+                    <button type="button" class="btn btn-primary m-r-10 m-b-5"><i class="icofont icofont-plus"></i>
+                      Follow</button>
+                    <button type="button" class="btn btn-primary"><i class="icofont icofont-ui-messaging"></i>
+                      Message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--profile cover end-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="md-tabs md-card-tabs">
+        <ngb-tabset>
+            <ngb-tab title="Personal Info">
+                <ng-template ngbTabContent>
+                  <div [@fadeInOutTranslate] class="m-t-15">
+                    <!-- personal card start -->
+                    <div class="card">
+                       <!-- <div class="card-header" style="margin-bottom:15px;">
+                        <button id="edit-btn" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right"
+                          (click)="toggleEditProfile()">
+                          <i class="icofont {{ editProfileIcon }}"></i>
+
+                        </button>
+                        <br>
+                        <br>
+                        <div style="text-align:right">Last LogIn
+                            <p>{{employee.LastLogin}}</p></div>
+                      </div>  -->
+                      <div class="card-body">
+                        <div class="view-info" *ngIf="editProfile">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="general-info">
+                                <div class="row">
+                                  <div class="col-lg-12 col-xl-6">
+                                    <div class="table-responsive">
+                                      <table class="table m-0">
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">Full Name</th>
+                                            <td>{{employee.Name}}</td>
+                                          </tr>
+                                            <tr>
+                                            <th scope="row">Email ID</th>
+                                            <td> {{employee.EmailId}} </td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Phone Number</th>
+                                            <td>{{employee.PhoneNumber}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Address</th>
+                                            <td>{{employee.PresentAddress}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Created Date</th>
+                                            <td>{{ employee.CreatedDate | date:'dd-MMM-yyyy' }}</td>
+                                          </tr>
+
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-6">
+                                      <div class="table-responsive">
+                                        <table class="table">
+                                          <tbody>
+                                                 <div class="container">
+                                                  <div class="ml-auto" style="width:150px;">Last LogIn:
+                                                      <p>{{employee.LastLogin}}</p></div>
+                                                    </div>
+                                                  <button id="edit-btn" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right"
+                                                    (click)="toggleEditProfile()">
+                                                    <i class="icofont {{ editProfileIcon }}"></i>
+
+                                                  </button>
+
+
+
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+
+                                  <!-- end of table col-lg-6 -->
+                               </div>
+                                <!-- end of row -->
+                              </div>
+
+
+                              <!-- end of general info -->
+                            </div>
+                            <div>
+
+                            </div>
+                            <!-- end of col-lg-12 -->
+                          </div>
+                          <!-- end of row -->
+                        </div>
+                        <!-- end of view-info -->
+                        <div class="edit-info" *ngIf="!editProfile">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="general-info">
+                                <div class="row">
+                                  <div class="col-lg-12 col-xl-6">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row">Full Name</th>
+                                                <td><input type="text" id="Full Name" name="Full Name" [(ngModel)]="employee.Name"></td>
+                                              </tr>
+                                               <tr>
+                                                <th scope="row">Email ID</th>
+                                                <td> {{employee.EmailId}} </td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Phone Number</th>
+                                                <td>{{employee.PhoneNumber}}</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Address</th>
+                                                <td><input type="text" id="Address" name="Address" [(ngModel)]="employee.PresentAddress"></td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Created Date</th>
+                                                <td>{{ employee.CreatedDate | date:'dd-MMM-yyyy' }}</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                  </div>
+
+                                </div>
+                                <!-- end of row -->
+                                <div class="text-center">
+                                  <button (click)="updateUserdetails()" (click)="toggleEditProfile()" class="btn btn-primary waves-effect waves-light m-r-20">Save</button>
+                                  <a href="javascript:;" id="edit-cancel" class="btn btn-danger"
+                                    (click)="toggleEditProfile()">Cancel</a>
+                                </div>
+                              </div>
+                              <!-- end of edit info -->
+                            </div> 
+                            <!-- end of col-lg-12 -->
+                          </div>
+                          <!-- end of row -->
+                        </div>
+                        <!-- end of edit-info -->
+                      </div>
+                      <!-- end of card-body -->
+                    </div>
+
+                    <!-- personal card end-->
+                  </div>
+                </ng-template>
+              </ngb-tab>
+          <ngb-tab title="User's Services">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- info card start -->
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-header-text">User Services</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card b-l-success business-info services m-b-20">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">Shivani Hero</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card b-l-danger business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">Dress and Sarees</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card b-l-info business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">Shivani Auto Port</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card b-l-warning business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">Hair stylist</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card b-l-danger business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">BMW India</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card b-l-success business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">Shivani Hero</h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Delete</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                View</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
+                                  eiusmod temp or incidi dunt ut labore et.Lorem ipsum dolor sit amet, consecte.</p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- info card end -->
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Setting">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- info card start -->
+                <div class="card user-card">
+                  <div class="card-header">
+                    <h5>Profile</h5>
+                  </div>
+                  <div class="card-block">
+                    <div class="usre-image">
+                      <img [src]="imgURL" height="110" width="110" class="img-radius" alt="User-Profile-Image">
+                    </div>
+                    <h6 class="f-w-600 m-t-25 m-b-10">{{employee.UserName}}</h6>
+                    <input type="file" #file accept='image/*' (change)="onChange(file.files)"/>
+                    <hr />
+                    <button type="button" class="btn btn-primary" (click)="UpdateProfile()">Upload</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-danger">Remove</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-success">Sanpshot</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <hr />
+                  </div>
+                </div>
+                <!-- info card end -->
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Change Password">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!--Changed Password Validation Start-->
+                <app-card [title]=" " [headerContent]=" " [cardOptionBlock]="true">
+                  <form #PasswordForm="ngForm">
+                    <label class="col-sm-2 col-form-label">Current Password</label>
+                    <div class="col-sm-6">
+                      <input type="password" class="form-control" name="CurrentPassword" [(ngModel)]="User.password"
+                        #CurrentPassword="ngModel" pattern="^[!@#$%^&*()_+0-9A-za-z]{0,10}$" required>
+                      <div style="text-align: left;"
+                        *ngIf="CurrentPassword.errors?.pattern || (CurrentPassword.errors && (CurrentPassword.dirty || CurrentPassword.touched))"
+                        class="text-danger">
+                        Current Password not valid.
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-form-label">New Password</label>
+                    <div class="col-sm-6">
+                      <input type="password" class="form-control" name="NewPassword" [(ngModel)]="User.newpassword"
+                        #NewPassword="ngModel" pattern="^[!@#$%^&*()_+0-9A-za-z]{0,10}$" required>
+                      <div style="text-align: left;"
+                        *ngIf="NewPassword.errors?.pattern || (NewPassword.errors && (NewPassword.dirty || NewPassword.touched))"
+                        class="text-danger">
+                        New Password not valid.
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-6">
+                      <input type="password" class="form-control" name="ConfirmPassword" [(ngModel)]="confirmpassword"
+                        #ConfirmPassword="ngModel" pattern="{{User.newpassword}}" required>
+                      <div style="text-align: left;"
+                        *ngIf="ConfirmPassword.errors?.pattern || (ConfirmPassword.errors && (ConfirmPassword.dirty || ConfirmPassword.touched))"
+                        class="text-danger">
+                        Confirm Password not match.
+                      </div>
+                    </div> <br>
+                    <div class="row">
+                      <label class="col-sm-2"></label>
+                      <div class="col-sm-4">
+                        <button (click)="UpdatePassword()" type="submit" class="btn btn-primary m-b-0">Update</button>
+                        &nbsp;&nbsp;
+                        <button type="submit" class="btn btn-primary m-b-0">Reset</button>
+                      </div>
+                    </div>
+                  </form>
+                </app-card>
+                <!--Changed Password Validation Start-->
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>

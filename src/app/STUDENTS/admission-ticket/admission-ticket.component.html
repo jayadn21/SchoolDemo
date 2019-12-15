@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-sm-6">
+    <app-card>
+      <div style="text-align: center">
+        <h5>{{Headingtext}}</h5>
+        <hr>
+        <table>
+          <thead>
+            <th>Select Class</th>
+            <th>To Apply</th>
+          </thead>
+          &nbsp;
+          <tbody>
+            <tr *ngFor="let assign of newclasssection">
+              <td>{{assign.Name}}</td>
+              <td>
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="assign.IsSelected"
+                  #Name="ngModel" required></ui-switch>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="log"></div>
+        <div class="mt-3">
+          <div class="col-sm-12">
+            <select class="browser-default custom-select">
+              <option value="-1" disabled='true'> Choose Subject Combination </option>
+              <option *ngFor="let assess of subjectCombination" value={{assess.Id}}>{{assess.Name}} </option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Admission Ticket Header"
+              [(ngModel)]="Admissionticket.Name" #Name="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="SSchool or College Code"
+              [(ngModel)]="Admissionticket.Name" #Name="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Register Number Prefix"
+              [(ngModel)]="Admissionticket.Name" #Name="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div class="mt-3">
+            <b>Admission ticket Content</b>
+          </div>
+        </div> <br>
+        <editor apiKey="aqnihi31vj0w8obre7mxp3qy9v2zflzyteud5dpst69tcq7w" initialValue="<p>This is the initial content of the editor</p>" [init]="{ height: 500,
+       menubar: false,
+       plugins: [
+         'advlist autolink lists link image charmap print preview anchor',
+         'searchreplace visualblocks code fullscreen',
+         'insertdatetime media table paste code help wordcount'
+       ],
+       toolbar:
+         'undo redo | formatselect | bold italic backcolor | \
+         alignleft aligncenter alignright alignjustify | \
+         bullist numlist outdent indent | removeformat | help'
+     }">
+        </editor>
+        <br>
+        <button type="button" class="btn btn-primary" id="saveAdmissionTicket" (click)="saveAdmissionTicket()"
+          type="submit">Submit</button>
+        &nbsp; &nbsp;&nbsp; &nbsp;
+      </div>
+    </app-card>
+  </div>
+</div>
+<div class="col-sm-12">
+  <app-card [title]="AdmissionTicketHeader">
+    <div class="mt-3">
+      <h5> Admission Ticket Header </h5>
+      <hr>
+    </div>
+    <ng2-smart-table [settings]="settings" [source]="admissionTicket" (deleteConfirm)="onDeleteConfirm($event)"
+      (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)" (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </app-card>
+</div>

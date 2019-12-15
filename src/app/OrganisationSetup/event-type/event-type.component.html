@@ -1,0 +1,61 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card [title]="EventType" [classHeader]="true">
+      <div style="text-align: center">
+        <h5>{{Headingtext}}</h5>
+        <br>
+        <div>
+          Event Name
+          <input type="text" class="form-control" name="Event Type" [(ngModel)]="Eventtype.Name" #Name="ngModel"
+          placeholder="Event Name" required>
+        </div>&nbsp;
+        <div>
+          <label class="col-sm-2 col-form-label">Color</label>
+           <input type="color" [(ngModel)]="Eventtype.Color" />
+          <div>
+            <input type="text" class="form-control" [(ngModel)]="Eventtype.Color" />
+          </div>
+        </div>
+        <div><br>
+          <button type="button" class="btn btn-primary" id="saveEventType" (click)="saveEventType()"
+            type="submit">{{Buttontext}}</button>
+          &nbsp;
+          <button type="button" class="btn btn-danger" (click)="cleardata()">Cancel</button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card [title]="Feesaccountlist" [classHeader]="true">
+      <h5>Event Type</h5>
+      <hr>
+      <!-- <ng2-smart-table [settings]="settings" [source]="eventType" (deleteConfirm)="onDeleteConfirm($event)"
+        (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+        (custom)="onCustomAction($event)">
+      </ng2-smart-table> -->
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Color</th>
+          <th style="width:100px">Edit</th>
+          <th style="width:100px">Delete</th>
+        </tr>
+        <tr *ngFor="let et of eventType">
+          <td>
+            <span>{{et.Name}}</span>
+          </td>
+          <td [ngStyle]="{'background-color':et.Color}">
+            <span>{{et.Color}}</span>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="onEdit(et)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDeleteConfirm(et)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </app-card>
+  </div>
+</div>

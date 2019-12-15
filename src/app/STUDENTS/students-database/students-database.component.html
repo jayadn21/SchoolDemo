@@ -1,0 +1,1436 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<h3 style="font-family:courier;">Student's Profile</h3>
+<nav class="navbar navbar-light bg-white">
+  <form class="form-inline">
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-outline-primary mr-3" type="button">Students</button>
+      <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:"
+              [routerLink]="['/STUDENTS/students-settings/']"> Student Database </a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:"> Admission Enquiry</a>
+              <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/grades/']"
+              href="javascript:"> Grades </a>
+              <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/remark/']"
+              href="javascript:"> Remark </a>
+            </div>
+        <!-- Some Text here -->
+    </div>
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-outline-success" type="button"><i
+          class="ti-settings"></i>Settings</button>
+      <div ngbDropdownMenu>
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal1('custom-modal-2')">Batches</button>
+        </div>
+        <jw-modal id="custom-modal-2">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>Manage Academic Batches</b><button type="button" class="close basic-close"
+                  (click)="closeModal1('custom-modal-2');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h4 class="sub-title">
+                  <font size="3">Add Academic batches</font>
+                </h4>
+                <div class="mt-3">
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" name="Batch Name" placeholder="Batch Name"
+                      [(ngModel)]="BatchName.BatchName" #BatchName="ngModel" [ngModelOptions]="{standalone: true}"
+                      required>
+                    <span class="md-line"></span>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <div class="row">
+                    <div class="col-auto">
+                      <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="BatchName.CurrentBatch"
+                        #CurrentBatch="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+                    </div>
+                    <h6>: Current Batch</h6>
+                  </div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary" placement="bottom">Submit</button>
+              </div>
+              <div class="col-sm-6 mobile-inputs">
+                <div class="col-sm-12">
+                  <h4 class="sub-title">
+                    <font size="3">Batches</font>
+                  </h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <input type="text" value="2015-16" readonly class="form-control" placeholder="2015-16 ">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" value="2016-17" readonly class="form-control" placeholder="2015-16 ">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" value="2017-18" readonly class="form-control" placeholder="2015-16 ">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </jw-modal>
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal2('custom-modal-2')">Sections</button>
+        </div>
+        <jw-modal id="custom-modal-2">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>New Application Form</b><button type="button" class="close basic-close"
+                  (click)="closeModal2('custom-modal-2');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+          </div>
+        </jw-modal>
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal3('custom-modal-2')">Classes</button>
+        </div>
+        <jw-modal id="custom-modal-2">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>New Application Form</b><button type="button" class="close basic-close"
+                  (click)="closeModal3('custom-modal-2');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+          </div>
+        </jw-modal>
+        <div style="text-align: center">
+          <button class="btn btn-link" [routerLink]="['/STUDENTS/student-catogery/']"
+          href="javascript:">Categories</button>
+        </div>
+
+        <div style="text-align: center">
+          <button class="btn btn-link" [routerLink]="['/STUDENTS/custom-fields/']"
+          href="javascript:">Custom Field</button>
+        </div>
+
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal6('custom-modal-2')">Add-on-Facilities</button>
+        </div>
+        <jw-modal id="custom-modal-2">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>New Application Form</b><button type="button" class="close basic-close"
+                  (click)="closeModal6('custom-modal-2');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+          </div>
+        </jw-modal>
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal7('custom-modal-1')">Admission Ticket</button>
+        </div>
+        <jw-modal id="custom-modal-1">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>Admission ticket Settings</b><button type="button" class="close basic-close"
+                  (click)="closeModal7('custom-modal-1');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+            <div class="col-sm-6">
+              <h4 class="sub-title">
+                <font size="3">Create Admission Ticket by Class</font>
+              </h4>
+              Select Class by Apply
+              <div class="mt-3">
+                <div class="row">
+                  <div class="col-auto">
+                    <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="BatchName.CurrentBatch"
+                      #CurrentBatch="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+                  </div>
+                  <h6>: KG-1</h6>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="row">
+                  <div class="col-auto">
+                    <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="BatchName.CurrentBatch"
+                      #CurrentBatch="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+                  </div>
+                  <h6>: KG-2</h6>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="row">
+                  <div class="col-auto">
+                    <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="BatchName.CurrentBatch"
+                      #CurrentBatch="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+                  </div>
+                  <h6>: 1st STD A</h6>
+                </div>
+              </div>
+              <h4 class="sub-title">
+                <font size="3">Application Fees</font>
+              </h4>
+              <div class="col-sm-12">
+                <select name="select" class="form-control form-control-default" placeholder="Choose Subject Combination"
+                  [(ngModel)]="BatchName.AcademicYearId" #AcademicYearId="ngModel" required>
+                  <option value="opt1">Choose Subject Combination</option>
+                  <option value="opt2">2016 </option>
+                  <option value="opt3">2015 </option>
+                  <option value="opt4"> </option>
+                  <option value="opt5">Type 5</option>
+                  <option value="opt6">Type 6</option>
+                  <option value="opt7">Type 7</option>
+                  <option value="opt8">Type 8</option>
+                </select>
+              </div>
+              <div class="mt-3">
+                <div class="col-lg-12">
+                  <input type="text" class="form-control form-control-default" name="Admission Tecket"
+                    placeholder="Admission ticket Header" [(ngModel)]=" BatchName.AdmissionTicket"
+                    #AdmissionTicket="ngModel" [ngModelOptions]="{standalone: true}" required>
+                  <span class="md-line"></span>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="col-lg-12">
+                  <input type="text" class="form-control form-control-default" name="School or College"
+                    placeholder="School or Colleger" [(ngModel)]=" BatchName.SchoolCollege" #SchoolCollege="ngModel"
+                    [ngModelOptions]="{standalone: true}" required>
+                  <span class="md-line"></span>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="col-lg-12">
+                  <input type="text" class="form-control form-control-default" name="Register Number"
+                    placeholder="Register Number Prefix" [(ngModel)]=" BatchName.RegisterNumber"
+                    #RegisterNumber="ngModel" [ngModelOptions]="{standalone: true}" required>
+                  <span class="md-line"></span>
+                </div>
+              </div>
+              <div class="mt-3"></div>
+              <h4 class="sub-title">
+                <font size="3">Admission Ticket Content</font>
+              </h4>
+              <textarea style="height: 200px;" rows="5" name="name" class="form-control">Put your things hear</textarea> <br>
+              <div style="text-align:center;">
+                <button type="submit" class="btn btn-primary"> Submit</button>
+              </div>
+              </div>
+            </div>
+        </jw-modal>
+        <div style="text-align: center">
+          <button class="btn btn-link" (click)="openModal8('custom-modal-2')">Imports</button>
+        </div>
+        <jw-modal id="custom-modal-2">
+          <div class="app-modal-header">
+            <div style="text-align:center;">
+              <h4 class="modal-title"><b>New Application Form</b><button type="button" class="close basic-close"
+                  (click)="closeModal8('custom-modal-2');">
+                  <span aria-hidden="true">&times;</span>
+                </button></h4>
+              <hr>
+            </div>
+          </div>
+        </jw-modal>
+      </div>
+    </div>
+  </form>
+</nav> <br>
+<div class="row">
+  <div class="col-xl-4">
+    <!-- Tooltip style 1 card start -->
+    <!-- Upload Photo Start -->
+    <!-- <div class="card-block">
+        <div class="usre-image">
+          <img [src]="imgURL" height="110" width="110" class="img-radius" alt="User-Profile-Image">
+        </div>
+        <h6 class="f-w-600 m-t-25 m-b-10">Aliya Afreen</h6>
+        <input type="file" #file accept='image/*' (change)="onChange(file.files)"/>
+        <hr />
+        <button type="button" class="btn btn-primary" (click)="UpdateProfile()">Upload</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger">Remove</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-success">Sanpshot</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <hr />
+      </div> -->
+    <!-- Upload Photo End -->
+    <div class="card user-card">
+      <div class="card-block">
+        <div class="usre-image">
+          <img src=" " class="img-rounded" alt=" ">
+          <img [src]="imgURL" height="110" width="110" class="img-radius" alt="User-Profile-Image">
+        </div>
+        <h6 class="f-w-600 m-t-25 m-b-10">Aliya Afreen</h6>
+        <input type="file" #file accept='image/*' (change)="onChange(file.files)"/>
+        <!-- <button>Browse..</button> No File Selected <br> -->
+        <hr />
+        <button type="button" class="btn btn-primary btn-sm mr-1">Upload</button>
+        <button type="button" class="btn btn-danger btn-sm mr-1">Remove</button>
+        <button type="button" class="btn btn-success btn-sm mr-1">Sanpshot</button>
+      </div>
+    </div>
+    <div class="card user-card">
+      <div class="card-block">
+        <div class="card bg-success">
+          <div class="card-body text-left">
+            <p>
+              <font size="3" style="color:green;"><b>Resend Login Details</b> </font>
+            </p>
+            <hr>
+            <p class="card-text" style="color:green;">You can resend the parents app login details here.An email and SMS
+              will be sent to
+              the
+              parents with all
+              the required details</p>
+            <button type="button" style="text-align: left" class="btn btn-danger btn-md">Resend Login</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <div class="card bg-success">
+          <div class="card-body text-left">
+            <p>
+              <font size="3" style="color:green;"><b>Password Reset</b> </font>
+            </p>
+            <hr>
+            <p class="card-text" style="color:green;">ou can reset the password of the parent app here.An email SMS will
+              be sent to the
+              parent with the
+              automatically generated new password</p>
+            <button type="button" style="text-align: left" class="btn btn-danger btn-md">Reset Password</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <div class="card bg-success">
+          <div class="card-body text-left">
+            <p>
+              <font size="3" style="color:green;"><b>Student Approval</b> </font>
+            </p>
+            <hr>
+            <p class="card-text" style="color:green;">To approve or disapprove the student use the switch button</p>
+            <ui-switch color="red" switchColor="#fff" size="small">
+            </ui-switch>
+            <font size="3" style="color:green;"><b> :Approved</b> </font>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <div class="card bg-success">
+          <div class="card-body text-left">
+            <p>
+              <font size="3" style="color:green;"><b>Student Status</b> </font>
+            </p>
+            <hr>
+            <p class="card-text" style="color:green;">To change the status of the student use the switch below</p>
+            <ui-switch color="red" switchColor="#fff" size="small">
+            </ui-switch>
+            <font size="3" style="color:green;"><b> :Current</b> </font>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xl-8">
+    <app-card>
+      <div class="row">
+        <div class="col-md-12">
+          <ngb-tabset>
+            <ngb-tab title="Fees">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+                  <p class="m-4"></p>
+                  <button type="button" class="btn btn-primary btn-md">Add Fees Statement</button>
+                  <hr>
+                  <ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)"
+                    (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+                    (custom)="onFeesCustomAction($event)"></ng2-smart-table>
+
+                  <jw-modal id="Feesmodal">
+                    <div class="app-modal-header">
+
+                      <!-- <button type="button" class="close basic-close"
+                              (click)="closeFeesModal('Feesmodal');">
+                              <span aria-hidden="true">&times;</span>
+                            </button> -->
+                      <div class="row">
+                        <div div class="col-sm-6">
+                          <div style="text-align: left">
+                            <p> <b>Class</b>: 2nd STD A </p>
+                            <p> <b>Statement ID</b>: Demo10011101/1458 </p>
+                            <p> <b>Year</b>: 2016-17 </p>
+                            <p> <b>Fees Head</b>: SCHOOL FEE </p>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <div style="text-align: right">
+                            <p> <b>Statement Date</b>: 13-03-2018 </p>
+                            <p> <b>Due Date</b>: 13-12-2018 </p>
+                            <p> <b>Amount Pending</b>: 63000 </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="text-align: center">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Fees Account</th>
+                              <th scope="col">Description</th>
+                              <th scope="col">Fees</th>
+                              <th scope="col">Pending</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">TUTION FEES</th>
+                              <td></td>
+                              <td>Rs. 50000.00</td>
+                              <td>Rs. 50000.00</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">LIBRARY FEES</th>
+                              <td></td>
+                              <td>Rs. 5000.00</td>
+                              <td>Rs. 5000.00</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">EXAM FEES</th>
+                              <td></td>
+                              <td>Rs. 100000.00</td>
+                              <td>Rs. 0</td>
+                            </tr>
+                            <tr>
+                              <th scope="row"> LABFEES</th>
+                              <td></td>
+                              <td>Rs. 8000.00</td>
+                              <td>Rs. 8000.00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                      <br>
+                      <br>
+                      <div class="row">
+                      <div class="col-sm-6">
+
+                      </div>
+                      <div class="col-sm-6">
+                        <div style="text-align: right;">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Grand Total</th>
+                                <th scope="col">Rs. 73000.00</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Payements</th>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">17-04-2018</th>
+
+                                <td>Rs. 100000.00</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Total Paid</th>
+                                <td>Rs. 100000.00</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Amount Pending</th>
+                                <td>Rs. 63000.00</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                      </div>
+
+                      <br>
+                      <div style="text-align: center;">
+                        <button class="btn btn-success">Print Receipt</button>
+                        &nbsp;
+                        <button class="btn btn-primary" (click)="closeFeesModal('Feesmodal')"
+                          (click)="OpenAddPaymentModal('paymentModal')">Add Payment</button>
+                        &nbsp;
+                        <button class="btn btn-info">Add Discount</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-light" (click)="closeFeesModal('Feesmodal')">Close</button>
+                      </div>
+
+
+
+                    </div>
+                  </jw-modal>
+
+
+                  <jw-modal id="paymentModal">
+                    <div class="app-modal-header">
+                      <div style="text-align:left;">
+                        <h4 class="modal-title"><b>Add Payment</b>
+                          <button type="button" class="close basic-close"
+                            (click)="closeAddPaymentModal('paymentModal');">
+                            <span aria-hidden="true">&times;</span>
+                          </button></h4>
+                        <hr>
+                      </div>
+                      <div style="text-align: center">
+                        <div class="mt-3">
+                          <div class="col-lg-14">
+                            <div class="md-form">
+                              <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                placeholder="Application Date">
+                              <span class="md-line"></span>
+                            </div>
+                            <span class="md-line"></span>
+                          </div>
+                        </div>
+
+                        <div class="mt-3">
+                          <div class="col-lg-14">
+
+                            <input type="text" class="form-control form-control-default" name="Amount"
+                              placeholder="Description">
+                            <span class="md-line"></span>
+                          </div>
+                        </div>
+                        <div class="mt-3">
+                          <div class="col-lg-14">
+                            <select name="select" class="form-control form-control-default">
+                              <option value="opt1">Choose Any One </option>
+                              <option value="opt2">Cash on Hand</option>
+                              <option value="opt3">No</option>
+                            </select>
+                            <span class="md-line"></span>
+                          </div>
+                        </div>
+
+                        <div class="mt-3">
+                          <div class="col-lg-14">
+
+                            <select name="select" class="form-control form-control-default">
+                              <option value="opt1">Choose Any One </option>
+                              <option value="opt2">BANK ACCOUNT 1</option>
+                              <option value="opt3">BANK ACCOUNT 2</option>
+                            </select>
+                            <span class="md-line"></span>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <select name="select" class="form-control form-control-default">
+                              <option value="opt1">Choose Any One </option>
+                              <option value="opt2">LAB FEES</option>
+                              <option value="opt3">TUTION FEES</option>
+                            </select>
+                            <span class="md-line"></span>
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control form-control-default" name="Amount"
+                              placeholder="8000">
+                            <span class="md-line"></span>
+                          </div>
+                          <div class="col-sm-1">
+                            <div class="input-group-append">
+                              <button class="btn btn-danger" type="button"><i class="fa fa-times"
+                                  aria-hidden="true"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div style="text-align: left;">
+                                <button type="button" class="btn btn-light">+ Add Line</button>
+                            </div>
+                          </div>
+
+
+
+                            <div class="col-sm-6">
+                              <div style="text-align:right;">
+                                <p>Grand Total: Rs. 8000 /-</p>
+                                </div>
+                                </div>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <p class="text-primary">
+                                       Notification Options
+                                      </p>
+                                </div>
+
+                                      <div class="row">
+                                          <ui-switch color="#4680ff" switchColor="#fff" size="small">
+
+                                          </ui-switch> <b>&nbsp;:Send SMS Notifications</b>
+
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+
+                                    <button type="button" class="btn btn-primary">Submit</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-warning" (click)="closeAddPaymentModal('paymentModal');">Cancel</button>
+                                </div>
+                      </div>
+                    </div>
+                  </jw-modal>
+
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Students Info">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+                  <p class="text-center font-weight-bold">
+                    <font size="4"><b>Basic Information</b></font>
+                  </p>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Adm No. :</b> {{Newstudent.AdmissionNo}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Name :</b> {{Newstudent.Name}}</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Date of Birth:</b> {{Newstudent.DateOfBirth}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Place of Birth:</b> </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Aadhaar no. :</b> </font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Nationality :</b> Indian</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Mother Toung :</b> Urdu</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Religion :</b> {{Newstudent.ReligionId}}</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Caste :</b> {{Newstudent.CasteId}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Category :</b> {{Newstudent.SubCasteId}}</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Gender :</b> {{Newstudent.Gender}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Blood Group :</b> {{Newstudent.BloodGroup}} </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Mobile No. :</b> {{Newstudent.PhoneNumber}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Email :</b> </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Present Address :</b>{{Newstudent.PresentAddress}}</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Permanent Address :</b> {{Newstudent.PermanentAddress}}</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <p class="text-center font-weight-bold">
+                        <font size="4"><b>Acedemic Information</b></font>
+                      </p>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Admission Date :</b> 24/05/2016</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Student U-ID :</b> 666948395049</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Pervious Organisation Attended:</b> </font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Pervious Organisation TC No.:</b> </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Batch:</b> 2016-17 </font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Class:</b>2nd STD A</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Admission Category:</b> General</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Class During Admission :</b> 2nd STD</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Roll Number:</b> 3</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <p class="text-center font-weight-bold">
+                        <font size="4"><b>Parents Information</b></font>
+                      </p>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Father Name:</b> Iliyaz Pasha</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Mother Name:</b> B B Ayesha</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Mobile Primary:</b> 8050783561</font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Mobile Scondary:</b> </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <div class="row justify-content-left">
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Email:</b> </font>
+                            </p>
+                          </div>
+                          <div class="col-6">
+                            <p>
+                              <font size="3"><b>Family Income:</b> </font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="mt-3">
+                        <button type="button" class="btn btn-info" placement="bottom">Edit Student </button>
+                        &nbsp;&nbsp;
+                        <!-- <button type="button" class="btn btn-warning" placement="bottom">Certificates</button>  -->
+
+                        <button type="button" class="btn btn-warning" (click)="openModal('custom-modal-1')"
+                          placement="bottom">Certificates</button>
+                        <div>
+                          <jw-modal id="custom-modal-1">
+                            <div class="app-modal-header">
+                              <div class="app-modal-header">
+                                <div style="text-align:center;">
+                                  <h4 class="modal-title"><b>Print Certificate</b></h4>
+                                  <hr>
+                                </div>
+                                <button type="button" class="close basic-close" (click)="closeModal('custom-modal-1');">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="app-modal-body">
+                                  <select name="change" [(ngModel)]="optionSelected"
+                                    class="form-control form-control-default" id="change" #Name="ngModel" required>
+                                    <option value="1">Choose Certificate to Print</option>
+                                    <option value="2">Study Certificate- 1</option>
+                                    <option value="3">Study Certificate- 2</option>
+                                    <option value="4">Admission Extract</option>
+                                    <option value="5">Transfer Certificate</option>
+                                    <option value="6">Re-Admission Form</option>
+                                  </select>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary"
+                                      (click)="okButtonHandler('custom-modal-1');">Ok</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                                      (click)="closeModal('custom-modal-1');">Close</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </jw-modal>
+
+                          <jw-modal id="custom-modal-2">
+                            <div class="app-modal-header">
+                              <div style="text-align:center;">
+                                <h4 class="modal-title"><b>Transfer Certificate Data</b></h4>
+                                <hr>
+                              </div>
+                              <button type="button" class="close basic-close" (click)="closeModal('custom-modal-2');">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="app-modal-body">
+                              <div class="mt-3"></div>
+                              <b> Please fill in all the fields to print the transfer Certificate </b>
+                              <br>
+                              <br>
+                              <div class="col-lg-14">
+                                <b>T.C No.</b>
+                                <input type="text" class="form-control form-control-default" name="Amount"
+                                  placeholder="T.C No.">
+                                <span class="md-line"></span>
+                              </div>
+                              <br>
+                              <div class="col-lg-14">
+                                <b>Whether the pupil has paid all the fees</b>
+                                <select name="select" class="form-control form-control-default">
+                                  <option value="opt1">Choose Any One </option>
+                                  <option value="opt2">Yes</option>
+                                  <option value="opt3">No</option>
+                                </select>
+                                <span class="md-line"></span>
+                              </div>
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Fees concession if any</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Whether qualified for Promotion</b>
+                                  <select name="select" class="form-control form-control-default">
+                                    <option value="opt1">Choose Any One </option>
+                                    <option value="opt2">Yes</option>
+                                    <option value="opt3">No</option>
+                                  </select>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Date on Which the application for the T.C was received</b>
+                                  <div class="md-form">
+                                    <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                      placeholder="Application Date">
+                                    <span class="md-line"></span>
+                                  </div>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Date of Issue of T.C</b>
+                                  <div class="md-form">
+                                    <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                      placeholder="Application Date">
+                                    <span class="md-line"></span>
+                                  </div>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Date of pupils last attendance</b>
+                                  <div class="md-form">
+                                    <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                      placeholder="Application Date">
+                                    <span class="md-line"></span>
+                                  </div>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Number of school days up to the date of leaving</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Number of school days pupil attended</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Date of admission or promotion to that class </b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Whether the medical exam done or not</b>
+                                  <select name="select" class="form-control form-control-default">
+                                    <option value="opt1">Choose Any One </option>
+                                    <option value="opt2">Yes</option>
+                                    <option value="opt3">No</option>
+                                  </select>
+                                  <b>Date of Issue of T.C</b>
+                                  <div class="md-form">
+                                    <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                      placeholder="Application Date">
+                                    <span class="md-line"></span>
+                                  </div>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Internal or Board Based Exam</b>
+                                  <select name="select" class="form-control form-control-default">
+                                    <option value="opt1">Choose Any One </option>
+                                    <option value="opt2">Yes</option>
+                                    <option value="opt3">No</option>
+                                  </select>
+                                  <b>Date of pupils last attendance</b>
+                                  <div class="md-form">
+                                    <input type="date" id="inputMDEx" class="form-control" name="Appldate"
+                                      placeholder="Application Date">
+                                    <span class="md-line"></span>
+                                  </div>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Reason for leaving the organization </b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Any other Remarks </b>
+                                  <b>Number of school days up to the date of leaving</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Number of school days pupil attended</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Date of admission or promotion to that class </b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Whether the medical exam done or not</b>
+                                  <select name="select" class="form-control form-control-default">
+                                    <option value="opt1">Choose Any One </option>
+                                    <option value="opt2">Yes</option>
+                                    <option value="opt3">No</option>
+                                  </select>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Internal or Board Based Exam</b>
+                                  <select name="select" class="form-control form-control-default">
+                                    <option value="opt1">Choose Any One </option>
+                                    <option value="opt2">Yes</option>
+                                    <option value="opt3">No</option>
+                                  </select>
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Reason for leaving the organization </b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Any other Remarks </b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="mt-3">
+                                <div class="col-lg-14">
+                                  <b>Character and Conduct</b>
+                                  <input type="text" class="form-control form-control-default" name="Amount"
+                                    placeholder="">
+                                  <span class="md-line"></span>
+                                </div>
+                              </div>
+
+                            </div>
+                            <!-- <div class="app-modal-footer">
+                                        <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
+                                        <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>
+                                      </div> -->
+                            <br>
+
+                            <button type="button" class="btn btn-warning" placement="bottom">Save & Print</button>
+                          </jw-modal>
+
+                          <!-- <div>
+                          <app-modal-basic #modalDefault>
+                            <div class="app-modal-header">
+                              <h4 class="modal-title">Print Certificate</h4>
+                              <button type="button" class="close basic-close" (click)="modalDefault.hide()">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="app-modal-body">
+                              <select name="select" class="form-control form-control-default" id="change"
+                              (change)="onOptionsSelected('certModal')">
+                                <option value="">Choose Certificate to Print</option>
+                                <option value="">Study Certificate- 1</option>
+                                <option value="">Study Certificate- 2</option>
+                                <option value="">Admission Extract</option>
+                                <option value="">Transfer Certificate</option>
+                                <option value="">Re-Admission Form</option>
+                              </select>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>   -->
+
+
+
+                          <!-- <div class="app-modal-footer">
+                              <button type="button" class="btn btn-default waves-effect"
+                                (click)="modalDefault.hide()">Close</button>
+                              <button type="button" class="btn btn-primary waves-effect waves-light ">Ok
+                                </button>
+                            </div>
+                          </div>
+                          </app-modal-basic> -->
+                        </div>
+
+                        &nbsp;&nbsp;
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Attendence">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+                  <app-card>
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <select name="select" class="form-control form-control-default">
+                            <option value="opt1">Choose months to see monthly report</option>
+                            <option value="opt2">Type 2</option>
+                            <option value="opt3">Type 3</option>
+                            <option value="opt4">Type 4</option>
+                            <option value="opt5">Type 5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <google-chart [data]="donutChartData"></google-chart>
+                    </div>
+                  </app-card>
+                  <app-card>
+                    <ul class="list-group">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <b> Total Days</b>
+                        <span class="badge badge-success badge-pill">00</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <b>Attended</b>
+                        <span class="badge badge-success badge-pill">00</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <b> Absent</b>
+                        <span class="badge badge-success badge-pill">00</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <b> Percentage</b>
+                        <span class="badge badge-success badge-pill">00</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <b>Status</b>
+                        <span class="badge badge-success badge-pill">Good</span>
+                      </li>
+                    </ul>
+                  </app-card>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Score Statistics">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+                  <app-card>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <select name="select" readonly class="form-control form-control-default">
+                          <option value="opt1">2016-17</option>
+                          <option value="opt2">Type 2</option>
+                          <option value="opt3">Type 3</option>
+                          <option value="opt4">Type 4</option>
+                          <option value="opt5">Type 5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <google-chart [data]="areaChartData"></google-chart>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> </th>
+                            <th>Assessment</th>
+                            <th>Class</th>
+                            <th>Batch</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <div class="input-group-append">
+                                <button type="button" class="btn btn-primary waves-effect btn-sm"
+                                  (click)="modalLarge.show()"><i class="fa fa-plus"></i></button>
+                                <app-modal-basic #modalLarge [dialogClass]="'modal-lg'">
+                                  <div class="app-modal-header">
+                                    <h4>Assessment</h4>
+                                    <button type="button" class="close basic-close" (click)="modalLarge.hide()">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="app-modal-body">
+                                    <div class="table-responsive">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th>Subjects</th>
+                                            <th>MAx. Marks</th>
+                                            <th>Obtained</th>
+                                            <th>Grade</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>ENGLISH</td>
+                                            <td>25</td>
+                                            <td>19</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>KANNADA</td>
+                                            <td>25</td>
+                                            <td>19</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>HINDI</td>
+                                            <td>25</td>
+                                            <td>22</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>SCIENCE</td>
+                                            <td>25</td>
+                                            <td>21</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>SOCIAL</td>
+                                            <td>25</td>
+                                            <td>21</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>MATHS</td>
+                                            <td>25</td>
+                                            <td>21</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <th>Total</th>
+                                            <th>150</th>
+                                            <th>124</th>
+                                            <th>A</th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <hr>
+                                    <div class="table-responsive">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th>Co-Scholastic Subjects</th>
+                                            <th>Grade</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>COMPUTER</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PHYSICAL EDUCATION</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>DRAWING</td>
+                                            <td>A</td>
+                                          </tr>
+                                          <tr>
+                                            <td>ART AND CRAFT</td>
+                                            <td>A</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </app-modal-basic>
+                              </div>
+                            </th>
+                            <td>SUMMATIVE ASSESSMENT 2</td>
+                            <td>2nd STD A</td>
+                            <td>2016-17</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </app-card>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Notes">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+
+                  <app-card [title]="'Combination chart'">
+                    <div id="chart4"></div>
+                  </app-card>
+
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Activities">
+              <ng-template ngbTabContent>
+                <div [@fadeInOutTranslate] class="m-t-25">
+                  <p class="m-4">5..</p>
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </app-card>
+  </div>
+
+</div>

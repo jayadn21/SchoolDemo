@@ -1,0 +1,377 @@
+<div class="page-body">
+  <ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+  <form ref='uploadForm'
+      id='uploadForm'
+      action='http://localhost:4200/FileUploadExpress/upload'
+      method='post'
+      encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+    </form>
+  <div>
+    <button class="btn btn-success" (click)="openNewEmpModal('custom-modal-2')">Create Employee</button>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xl-12">
+      <app-card>
+        <h5>Register New Employee</h5>
+        <hr>
+        <div class="col-xl-12">
+          <ng2-smart-table class="table-responsive" [settings]="settings" [source]="employees"
+            (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+            (createConfirm)="onCreateConfirm($event)" (custom)="onCustomAction($event)">
+          </ng2-smart-table>
+        </div>
+        <!-- Smart-Table End -->
+      </app-card>
+    </div>
+  </div>
+</div>
+<!-- Model-PopUp for Update Employee Start -->
+<!-- <button type="button" class="btn btn-danger" id="updateEmployeePopup"
+  (click)="newEmployeeModal('updateEmployee')">Employee</button> -->
+<jw-modal id="custom-modal-2">
+  <div class="app-modal-header">
+    <div style="text-align:center;">
+      <h4 class="modal-title"><b>{{modalName}}</b><button type="button" class="close basic-close"
+          (click)="closeModal('custom-modal-2');">
+          <span aria-hidden="true">&times;</span>
+        </button></h4>
+      <hr>
+    </div>
+    <!-- split pages start -->
+    <div class="row">
+      <div class="col-sm-6">
+        <form #manageEmployeeForm="ngForm">
+          <h4 class="sub-title">
+            <font size="4">Login infromation</font>
+          </h4>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="LoginId" placeholder="Login Id"
+                [(ngModel)]="selectedEmployee.UserName" #LoginId="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="LoginId.errors?.pattern || (LoginId.errors && (LoginId.dirty || LoginId.touched))"
+                class="text-danger">
+                LoginId Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="Name" placeholder="Full Name"
+                [(ngModel)]="selectedEmployee.Name" #Name="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="Name.errors?.pattern || (Name.errors && (Name.dirty || Name.touched))"
+                class="text-danger">
+                Name Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="EmpCode" placeholder="Employee Code"
+                [(ngModel)]="selectedEmployee.EmpCode" #EmpCode="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="EmpCode.errors?.pattern || (EmpCode.errors && (EmpCode.dirty || EmpCode.touched))"
+                class="text-danger">
+                Employee Code Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <font size="4">Set Password</font>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="password" class="form-control" name="userPass" placeholder="Password"
+                [(ngModel)]="selectedEmployee.Password" #userPass="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="userPass.errors?.pattern || (userPass.errors && (userPass.dirty || userPass.touched))"
+                class="text-danger">
+                valid Password Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="password" class="form-control" name="confirmPass" placeholder="Confirm Password"
+                [(ngModel)]="selectedEmployee.confirmPass" #confirmPass="ngModel"
+                pattern="{{selectedEmployee.Password}}" required>
+              <div style="text-align: left;"
+                *ngIf="confirmPass.errors?.pattern || (confirmPass.errors && (confirmPass.dirty || confirmPass.touched))"
+                class="text-danger">
+                Confirm Password not match.
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <font size="4">Contact Information</font>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PhoneNumber" placeholder="Primary Mobile"
+                [(ngModel)]="selectedEmployee.PhoneNumber" #PhoneNumber="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="PhoneNumber.errors?.pattern || (PhoneNumber.errors && (PhoneNumber.dirty || PhoneNumber.touched))"
+                class="text-danger">
+                Phone Number Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="AlternatePhoneNumber" placeholder="Secondary Mobile"
+                [(ngModel)]="selectedEmployee.AlternatePhoneNumber" #AlternatePhoneNumber="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="AlternatePhoneNumber.errors?.pattern || (AlternatePhoneNumber.errors && (AlternatePhoneNumber.dirty || AlternatePhoneNumber.touched))"
+                class="text-danger">
+                Secondary Phone Number Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="email" placeholder="Email"
+                [(ngModel)]="selectedEmployee.EmailId" #email="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="email.errors?.pattern || (email.errors && (email.dirty || email.touched))" class="text-danger">
+              Email address Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PresentAddress" placeholder="Present Address"
+                [(ngModel)]="selectedEmployee.PresentAddress" #PresentAddress="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="PresentAddress.errors?.pattern || (PresentAddress.errors && (PresentAddress.dirty || PresentAddress.touched))"
+                class="text-danger">
+                Address Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.check"
+                  #check="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>: Check this if Permanent is same as above
+            </div>
+          </div>
+          <div class="mt-3"></div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PermanentAddress" placeholder="Permanent Address"
+                [(ngModel)]="selectedEmployee.PermanentAddress" #PermanentAddress="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="PermanentAddress.errors?.pattern || (PermanentAddress.errors && (PermanentAddress.dirty || PermanentAddress.touched))"
+                class="text-danger">
+                Permanent Address not Matching
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <!-- <div class="md-form">
+            <label for="inputMDEx">Date Of Birth</label>
+            <input type="date" id="inputMDEx" class="form-control" name="DateOfBirth" placeholder="Mother Toung"
+              [(ngModel)]="selectedEmployee.DateOfBirth" #DateOfBirth="ngModel" required>
+            <div style="text-align: left;"
+              *ngIf="DateOfBirth.errors?.pattern || (DateOfBirth.errors && (DateOfBirth.dirty || DateOfBirth.touched))"
+              class="text-danger">
+              Birth date Required
+            </div>
+            <span class="md-line"></span>
+          </div> -->
+          <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="Date of Birth"
+                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i style="font-size:24px" class="fa">&#xf073;</i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          <div class="mt-3"></div>
+          <font size="4">Gender:</font>
+          <div class="form-radio">
+            <form>
+              <div class="radio radio-inline">
+                <label>
+                  <input type="radio" name="options" [(ngModel)]="selectedEmployee.Gender" value="Male">
+                  <i class="helper"></i>Male
+                </label>
+              </div>
+              <div class="radio radio-inline">
+                <label>
+                  <input type="radio" name="options" [(ngModel)]="selectedEmployee.Gender" value="Female">
+                  <i class="helper"></i>Female
+                </label>
+              </div>
+            </form>
+          </div>
+        </form>
+      </div>
+      <!-- split pages end -->
+      <div class="col-sm-6 mobile-inputs">
+        <form #manageEmployeeForm="ngForm">
+          <h4 class="sub-title">
+            <font size="4">Others</font>
+          </h4>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="bloodgroup" placeholder="Blood Group"
+                [(ngModel)]="selectedEmployee.BloodGroup" #BloodGroup="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="BloodGroup.errors?.pattern || (BloodGroup.errors && (BloodGroup.dirty || BloodGroup.touched))"
+                class="text-danger">
+                BloodGroup Reuired
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="Nationality" placeholder="Nationality"
+                [(ngModel)]="selectedEmployee.Nationality" #Nationality="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="Nationality.errors?.pattern || (Nationality.errors && (Nationality.dirty || Nationality.touched))"
+                class="text-danger">
+              Enter Nationality
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="MotherTounge" placeholder="Mother Toung"
+                [(ngModel)]="selectedEmployee.MotherTounge" #MotherTounge="ngModel" required>
+              <div style="text-align: left;"
+                *ngIf="MotherTounge.errors?.pattern || (MotherTounge.errors && (MotherTounge.dirty || MotherTounge.touched))"
+                class="text-danger">
+              MotherTounge Required
+              </div>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <font size="4">Login Access</font> <br>
+          <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.LoginAccess"
+            #LoginAccess="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+            : Un-Check this if you want to disable login for this employee
+          <div class="mt-3">
+            <font size="4">Control Access</font>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default">
+                <option value="opt1">Choose Profile</option>
+                <option value="opt2">Type 2</option>
+                <option value="opt3">Type 3</option>
+                <option value="opt4">Type 4</option>
+                <option value="opt5">Type 5</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h6>Organisation Sub-Division Access</h6>
+            <font size="3">If none of the sub-divisions is selected employees has full access to all the sub-divisions
+            </font>
+          </div>
+          <!-- Multi Select for Sub-Division Access Start -->
+          <div class="mt-3">
+                <div class="col-sm-14">
+                  <angular2-multiselect name="dropdown" [data]="InstitutionList" [(ngModel)]="selectedInstitutions"
+                    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                    (onDeSelect)="OnItemDeSelect($event,user)" (onSelectAll)="onSelectAll($event)"
+                    (onDeSelectAll)="onDeSelectAll($event)">
+                  </angular2-multiselect>
+              </div>
+              <div class="mt-3">
+              </div>
+            </div>
+          <!-- Multi Select For Sub-Division Access End -->
+
+          <!-- <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small"
+                  [(ngModel)]="selectedEmployee.montessoriSchool" #montessoriSchool="ngModel"
+                  [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.primarySchool"
+                  #primarySchool="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>: St. Xavier's Primary School
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.higherSchool"
+                  #higherSchool="ngModel" [ngModelOptions]="{standalone: true}" required>
+                </ui-switch>
+              </div>: St. Xavier's Higher Pri. School
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small"
+                  [(ngModel)]="selectedEmployee.secondarySchool" #secondarySchool="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                </ui-switch>
+              </div>: St. Xavier's Secondary School
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.pu"
+                  #pu="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>: St. Xavier's PU
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.brv"
+                  #brv="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>: BRV Public School
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="selectedEmployee.rainbow"
+                  #rainbow="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>: Rainbow International School
+            </div>
+          </div> -->
+        </form>
+      </div>
+    </div>
+    <div class="mt-3">
+        <div style="text-align:center;">
+          <button id="UpdateEmployeeButton"
+          (click)="UpdateEmployee('custom-modal-2')" type="submit"
+            data-dismiss="modal" class="btn btn-primary">
+            {{modalButtonText}}</button> &nbsp;&nbsp;&nbsp;
+          <button id="closeemployeepopUp"
+          class="btn btn-default waves-effect"
+            (click)="closeModal('custom-modal-2')">Close</button>
+        </div>
+      </div>
+  </div>
+</jw-modal>

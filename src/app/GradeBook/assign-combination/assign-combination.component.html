@@ -1,0 +1,96 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+  <app-card [title]="" [cardOptionBlock]="true">
+    <h5>Grade Book</h5>
+    <hr>
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assign Marks</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/consolidate-assessment/']"
+          href="javascript:">Consolidate Statements</a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:">Indicative Grade</a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light" type="button">Assessments</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/assessment/']"
+        href="javascript:">Assessments</a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> B </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> C </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> D </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> E </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" [routerLink]="['/GradeBook/subject-page/']">Subject Setup</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assessment
+        Setup</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> Assessment </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"
+          [routerLink]="['/GradeBook/assessment-head/']"> Assessment Head </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/grades/']"
+        href="javascript:"> Grades </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/remark/']"
+        href="javascript:"> Remark </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  </app-card>
+</div>
+
+<div class="page-body">
+  <div class="col-md-12 col-lg-12">
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <app-card [title]="AssignCombination">
+        <div class="mt-3">
+          <font size="3">Assign Combination to Student</font>
+        </div>
+        <div style="text-align: center">
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select class="browser-default custom-select">
+                <option selected> Select Subject Combination </option>
+                <option *ngFor="let assess of subjectCombination" value={{assess.Id}}>{{assess.Name}} </option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select class="browser-default custom-select">
+                <option selected> Select Class </option>
+                <option *ngFor="let assess of newclasssection" value={{assess.Id}}>{{assess.Name}} </option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <table>
+            <thead>
+                <th>Student</th>
+                <th>Name</th>
+            </thead>
+            &nbsp;&nbsp;
+            <tbody>
+                <tr *ngFor="let assign of students">
+                    <td>{{assign.Name}}</td>
+                    <td><ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="assign.IsSelected"
+                      #Name="ngModel" required></ui-switch></td>
+                </tr>
+            </tbody>
+        </table>
+          <div id="log"></div>
+          <button type="button" class="btn btn-primary" id="saveAssignCombination" (click)="saveAssignCombination()"
+          (click)="cleardata()" type="submit">{{Buttontext}}</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- <button type="button" class="btn btn-danger">Cancel</button> -->
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>

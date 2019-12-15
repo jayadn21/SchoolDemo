@@ -1,0 +1,234 @@
+<div class="page-body">
+  <div class="row">
+    <!-- order-card start -->
+    <!-- Students -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-statstic-card borderless-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5>Current Students</h5>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="fa fa-graduation-cap st-icon bg-primary"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">5,456</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Employees -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-statstic-card borderless-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5>Total Employees</h5>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="fa fa-users st-icon bg-warning txt-lite-color"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">20</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Parents App -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-statstic-card borderless-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5>Parents App</h5>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="fa fa-android st-icon bg-success"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">20</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SMS Remaining -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-statstic-card borderless-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5>SMS Remaining</h5>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="fa fa-envelope-o st-icon bg-danger"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">80</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="col-xl-6 col-xl-6">
+      <app-card>
+        <div class="row">
+          <!-- Students -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-c-blue order-card">
+              <button class="btn btn-primary">
+                <i class="ti-user f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Students</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Fees -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-success order-card">
+              <button class="btn btn-success">
+                <i class="ti-briefcase f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Fees</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Attendance -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-c-blue order-card">
+              <button class="btn btn-danger">
+                <i class="ti-check-box f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Attendance</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Grade Book -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-c-blue order-card">
+              <button class="btn btn-info">
+                <i class="ti-pencil-alt f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Grade Book</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Home work -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-c-blue order-card">
+              <button class="btn btn-warning">
+                <i class="ti-pencil f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Home work</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Messenger -->
+          <div class="col-md-8 col-xl-4">
+            <div class="card bg-c-blue order-card">
+              <button class="btn btn-primary">
+                <i class="ti-mobile f-centre"></i>
+                <div class="text-center">
+                  <h6 class="d-inline-block">Messenger</h6>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+    <!-- order-card end -->
+
+    <div class="col-xl-6 col-xl-6">
+      <app-card>
+        <div class="row">
+          <div class="card-header-img">
+            <div class="col-xl-8 col-xl-4">
+              <img src="assets/images/email/launch.png" class="img-radius" alt="User-Profile-Image">
+            </div>
+          </div>
+          <div>
+            <div lass="col-xl-12 col-xl-8">
+              <h4>{{defaultInstitute.Name}}</h4>
+              <h4>{{defaultInstitute.Address}}</h4>
+              <h4>{{defaultInstitute.City}} - {{ defaultInstitute.Pincode }}</h4>
+              <h4>{{defaultInstitute.Phone1}}</h4>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+
+    <!--School address starts-->
+    <div class="col-xl-6 col-xl-6">
+      <!-- <div class="card widget-statstic-card border-card"> -->
+
+      <!-- <div class="card-header"> -->
+      <i class="fa fa-address-book"></i>
+      <i class="fa fa-cameraht"></i>
+      <form #defaultForm="ngForm">
+        <div class="card-header-rig">
+          <div class="row simple-cards users-card">
+          </div>
+        </div>
+      </form>
+      <!-- </div> -->
+      <div class="card-block">
+
+        <!--<i class="fa fa-calendar st-icon bg-primary"></i>-->
+        <div class="text-left">
+          <h3 class="d-inline-block"></h3>
+          <!--<i class="fa fa-long-arrow-up f-24 text-success m-l-15"></i>-->
+
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+    <!--School address ends-->
+
+    <!-- App Status table start -->
+    <!-- <div class="col-xl-6 col-xl-4">
+    <div class="card widget-statstic-card border-card">
+    <div class="table-responsive">
+      <div class="text-center">
+        <h5 class="text-centre">App Status</h5>
+      </div>
+      <table class="table table-inverse">
+        <tbody>
+        <tr class="bg-primary">
+          <th scope="row">Total Students Registred</th>
+          <td>704</td>
+        </tr>
+        <tr>
+          <th scope="row">Current Students</th>
+          <td>676</td>
+        </tr>
+        <tr class="bg-success">
+          <th scope="row">Passed Out Students</th>
+          <td>13</td>
+        </tr>
+        <tr>
+          <th scope="row">Parents App Installed</th>
+          <td>8</td>
+        </tr>
+        <tr class="bg-warning">
+          <th scope="row">Total Employees Registered</th>
+          <td>9</td>
+        </tr>
+        <tr>
+          <th scope="row">SMS Left</th>
+          <td>488</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div> -->
+    <!-- App Status table end -->
+
+    <!-- Event Calendar Start-->
+
+    <!-- Event Calendar End-->
+
+  </div>

@@ -1,0 +1,89 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+  <app-card [title]="" [cardOptionBlock]="true">
+    <h5>Grade Book</h5>
+    <hr>
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assign Marks</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/consolidate-assessment/']"
+          href="javascript:">Consolidate Statements</a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:">Indicative Grade</a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light" type="button">Assessments</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/assessment/']"
+        href="javascript:">Assessments</a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> B </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> C </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> D </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> E </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" [routerLink]="['/GradeBook/subject-page/']">Subject Setup</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assessment
+        Setup</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> Assessment </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"
+          [routerLink]="['/GradeBook/assessment-head/']"> Assessment Head </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/grades/']"
+        href="javascript:"> Grades </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/remark/']"
+        href="javascript:"> Remark </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  </app-card>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card>
+      <div style="text-align: center">
+        <h5>{{Headingtext}}</h5>
+        <hr>
+        <br>
+        <div class="mt-3">
+          <div class="col-sm-14">
+            <input type="text" class="form-control" placeholder="Subject Name" [(ngModel)]="Subjectpage.Name"
+              #Name="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="col-sm-14">
+            <input type="text" class="form-control" placeholder="Short Name" [(ngModel)]="Subjectpage.ShortName"
+              #ShortName="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <select class="browser-default custom-select">
+            <option value="-1" disabled='true'> Select Subject Type </option>
+            <option *ngFor="let Subj of subjectType" value={{Subj.Id}}>{{Subj.Name}} </option>
+          </select>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" id="savesubjectPage" (click)="savesubjectPage()" type="submit">{{Buttontext}}</button>
+        &nbsp; &nbsp;&nbsp; &nbsp;
+        <button type="button" class="btn btn-danger" (click)="cleardata()">Cancel</button>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card>
+      <h5>Subjects</h5>
+      <hr>
+      <ng2-smart-table [settings]="settings" [source]="subjectPage" (deleteConfirm)="onDeleteConfirm($event)"
+        (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+        (custom)="onCustomAction($event)">
+      </ng2-smart-table>
+    </app-card>
+  </div>
+</div>

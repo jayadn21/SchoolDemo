@@ -1,0 +1,57 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card [title]="Charts" [classHeader]="true">
+        <div style="text-align: center">
+            <h5>{{Headingtext}}</h5>
+            <br>
+            <input type="text" name="Practical"  placeholder="Practical Name"
+            [(ngModel)]="practical.Name"  #Name="ngModel" required> 
+            <br>
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary"
+            id="savePracticals"
+            (click)="savePractical()" 
+            (click)= "cleardata()" type="submit" >{{Buttontext}}</button>
+            &nbsp;
+            &nbsp;
+            &nbsp; 
+            &nbsp;
+            <button type="button" class="btn btn-danger"
+            (click)= "cleardata()">Cancel</button>
+            </div>
+            <br> 
+            <hr>
+            <br>
+            <br>
+            <br>
+            <h6>Assign Students to practical Batch</h6>
+            <br>
+            <br>
+            <font size="4">Class:</font>
+                    <div class="mt-2">
+                        <div class="input-group">
+                            <select style="width:500px;"
+                            >
+                                <option value="" disabled selected>Select Class</option>
+                                <option *ngFor="let cls of classessections" value={{cls.Id}}>{{cls.Name}} </option>                           
+                               </select>
+                        </div>
+                      </div>
+    </app-card>
+  </div>
+
+  <div class="col-sm-6">
+    <app-card [title]="Chartslist" [classHeader]="true">
+        <h5>Practicals Btach</h5>
+        <hr>
+
+        <ng2-smart-table [settings]="settings" [source]="practicals" (deleteConfirm)="onDeleteConfirm($event)"
+       (editConfirm)="onSaveConfirm($event)"
+       (createConfirm)="onCreateConfirm($event)"
+       (custom)="onCustomAction($event)">
+      </ng2-smart-table>
+    </app-card>
+  </div>
+</div>

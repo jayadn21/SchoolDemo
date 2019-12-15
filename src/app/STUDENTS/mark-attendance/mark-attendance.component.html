@@ -1,0 +1,128 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<h3 style="font-family:courier;"> </h3>
+<nav class="navbar navbar-light bg-white">
+  <form class="form-inline">
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-outline-primary mr-3" type="button">Attendance</button>
+      <div ngbDropdownMenu>
+
+      </div>
+    </div>
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-outline-success mr-3" type="button"><i
+          class="ti-settings"></i>Reprots</button>
+    </div>
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-outline-success mr-3" type="button"><i
+          class="ti-settings"></i>Settings</button>
+    </div>
+  </form>
+</nav>
+<div class="mt-5"></div>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card [title]="MarkAttendance" [classHeader]="true">
+      <div class="mt-3">
+        <font size="3">Mark Attendance</font>
+      </div>
+      <div class="mt-2">
+        <div class="input-group">
+          <input class="form-control" placeholder="Due Date" name="dp" [(ngModel)]="selectedDate" ngbDatepicker
+            #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+              <i class="fa">&#xf073;</i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div class="col-sm-14">
+          <select class="browser-default custom-select" [(ngModel)]="paramData.AcademicYearId" #Name="ngModel" required>
+            <option value="0">--Select Academic Year--</option>
+            <option *ngFor="let mark of accountingyear" value={{mark.Id}}>{{mark.AcademicYear}} </option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-3">
+        <div class="col-sm-14">
+          <select class="browser-default custom-select" [(ngModel)]="paramData.ClassSectionMediumId" #Id="ngModel" required>
+            <option value="0">--Select Class Section--</option>
+            <option *ngFor="let mark of newclasssection" value={{mark.Id}}>{{mark.Name}} </option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-3">
+        <div class="row">
+          <div class="col-auto">
+            <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="attendanceData.IsHoliday"
+              #Holiday="ngModel" required></ui-switch>
+          </div>: is Holyday
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="saveMarkAttendance" (click)="getStudentSelectAttendance()"
+        type="submit">Submit</button>
+        <!-- <button type="button" class="btn btn-primary" id="saveMarkAttendance" (click)="saveMarkAttendance()"
+        type="submit">Submit</button> -->
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <!-- <app-card [title]="MarkAttendance" [classHeader]="true">
+      <h5>Mark Attendance</h5>
+      <ng2-smart-table [settings]="settings" [source]="markAttendanceGrid" (deleteConfirm)="onDeleteConfirm($event)"
+        (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+        (custom)="onCustomAction($event)">
+      </ng2-smart-table>
+    </app-card> -->
+    <app-card [title]="MarkAttendance" [classHeader]="true">
+      <h5>Mark Attendance</h5>
+      <table>
+        <thead>
+            <th>SubModuleName</th>
+            <th>checked</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of StudentAttendanceArr">
+                <td>{{student.Name}}</td>
+                <td><ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="student.IsPresent"
+                  #Notification="ngModel" required></ui-switch></td>
+            </tr>
+        </tbody>
+    </table>
+      <br>
+      <br><br>
+      <div id="log"></div>
+    </app-card>
+
+
+    <div class="col-sm-14">
+      <app-card [title]="NotificationOption" [classHeader]="true">
+        <h5>Notification Options</h5>
+        <div class="mt-3">
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="markAttendance.SMS" #SMS="ngModel"
+                required></ui-switch>
+            </div>: SMS Notifications
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="markAttendance.Notification"
+                #Notification="ngModel" required></ui-switch>
+            </div>: Send Parents APP Push Notification
+          </div><br>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-primary" id="saveMarkAttendance" (click)="saveMarkAttendance()"
+            type="submit">Submit</button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger" (click)="cleardata()">Cancel</button>
+        </div>
+      </app-card>
+    </div>
+  </div>
+
+</div>

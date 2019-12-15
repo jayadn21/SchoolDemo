@@ -1,0 +1,114 @@
+<div class="page-body">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card [title]="Expense">
+        <div class="mt-3">
+          <font size="3">
+            <h5>Expense</h5>
+          </font>
+        </div>
+        <div class="mt-3"></div>
+        <div style="text-align: center">
+          <div class="col-sm-6">
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="Date of Birth" name="dp" [(ngModel)]="model" ngbDatepicker
+                    #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                        style="font-size:24px" class="fa">&#xf073;</i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="1" disabled='true'> Select Date </option>
+                <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.IncomeDate}} </option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="-1" disabled='true'> Choose Deposite Account </option>
+                <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.IncomeAccountId}} </option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="-1" disabled='true'> Choose Sub Divisionn </option>
+                <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.InstitutionId}} </option>
+              </select>
+            </div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Description </option>
+                    <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.Description}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Account </option>
+                    <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.PaymentMethodId}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Payment Method </option>
+                    <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.PaymentMethodId}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Amount </option>
+                    <option *ngFor="let assess of expenseArray" value={{assess.Id}}>{{assess.Amount}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" type="submit" id="saveExpense" (click)="saveExpense()"
+            (click)="cleardata()">{{Buttontext}}</button>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <app-card [title]="Expense" [classHeader]="true">
+    <h5>Expense</h5>
+    <hr>
+    <ng2-smart-table [settings]="settings" [source]="expenseArray" (deleteConfirm)="onDeleteConfirm($event)"
+      (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)" (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </app-card>
+</div>

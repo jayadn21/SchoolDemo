@@ -1,0 +1,101 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+  <app-card [title]="" [cardOptionBlock]="true">
+      <h5>Accounting (Opening Balance)</h5>
+      <hr>
+      <div ngbDropdown class="dropdown-primary">
+          <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Fees Management</button>
+          <div ngbDropdownMenu>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Statements</a>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Direct Payments</a>
+             <!-- <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>  -->
+          </div>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+  
+        <div ngbDropdown class="dropdown-success">
+            <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Transactions</button>
+            <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Indirect Income</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Expense</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Bills</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Internal Transactions</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Journal Transactions</a>
+            </div>
+          </div>
+  
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+  
+        <button class="btn btn-success ">Payroll</button>
+  
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+  
+          <div ngbDropdown class="dropdown-info">
+            <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Reports</button>
+            <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Fees Reports</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Profit and Loss</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Balance Sheet</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Trial Balance</a>
+            </div>
+          </div>
+  
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+  
+          <div ngbDropdown class="dropdown-warning">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Settings</button>
+              <div ngbDropdownMenu>
+              <div *ngFor="let menuItem of accountingMenu">
+                <a class="dropdown-item waves-light waves-effect" [routerLink]="[menuItem.ModuleName,menuItem.routerLink]"
+                 href="javascript:">{{menuItem.Name}}</a>
+                </div>
+              </div>
+            </div>
+  </app-card>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <app-card [title]="OpeningBalance" [classHeader]="true">
+      <div style="text-align: center">
+        <h6>Manage Opening Balance </h6>
+      </div>
+      <div class="mt-3">
+        <font size="3">Set Opening Balance</font>
+      </div>
+      <div class="mt-2">
+        <div class="input-group">
+          <input class="form-control" placeholder="Due Date" name="dp" [(ngModel)]="selectedDate" ngbDatepicker
+            #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+              <i class="fa">&#xf073;</i></button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <div class="col-sm-14">
+          <input type="text" class="form-control" name="UnDeposidedFunds" placeholder="Un-deposited Funds"
+            [(ngModel)]="openingbalance.UnDeposidedFunds" #UnDeposidedFunds="ngModel" required>
+          <span class="md-line"></span>
+        </div>&nbsp;&nbsp;
+      </div>
+      &nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" id="saveOpeningBalance" (click)="saveOpeningBalance()"
+        (click)="cleardata()" type="submit">Submit</button>
+    </app-card>
+  </div>
+</div>

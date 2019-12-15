@@ -1,0 +1,123 @@
+<div style="text-align: right;">
+  <button type="button" class="btn btn-danger" type="submit" id="getviewRport" (click)="getviewReport()">Export</button>
+</div><br>
+<div class="col-sm-12">
+  <app-card [title]="Attendancelist" [classHeader]="true">
+    <h5>Attendance View-Report</h5>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <font size="2">Batch</font>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="col-sm-14">
+              <select class="browser-default custom-select" [(ngModel)]="paramData.AcademicYearId" #Name="ngModel"
+                required>
+                <option value="0">--Select Academic Year--</option>
+                <option *ngFor="let mark of accountingyear" value={{mark.Id}}>{{mark.AcademicYear}} </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- split pages end -->
+      <div class="col-sm-3">
+        <font size="2">Class</font>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="col-sm-14">
+              <select class="browser-default custom-select" [(ngModel)]="paramData.ClassSectionMediumId" #Id="ngModel"
+                required>
+                <option value="0">--Select Class Section--</option>
+                <option *ngFor="let mark of newclasssection" value={{mark.Id}}>{{mark.Name}} </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="col-sm-14">
+          <font size="2">Month</font>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="col-sm-14">
+                <select class="browser-default custom-select" [(ngModel)]="paramData.AttendanceMonth" #Id="ngModel"
+                required>
+                <option value="0">--Select Class Section--</option>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <font size="2">Shows</font>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="col-sm-14">
+              <select class="browser-default custom-select" [(ngModel)]="paramData.ClassSectionMediumId" #Id="ngModel"
+                required>
+                <option value="0">--Select Class Section--</option>
+                <option *ngFor="let mark of newclasssection" value={{mark.Id}}>{{mark.Name}} </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <button class="btn btn-info" type="submit"><i class="fa fa-refresh"></i>
+        <span class="glyphicon glyphicon-refresh"></span>
+      </button> &nbsp;&nbsp;
+      <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </div>
+  </app-card>
+</div>
+
+<div class="col-sm-12">
+  <app-card>
+    <h5>View Report</h5>
+              <!-- <td>
+                  <span class="fa fa-a"  [(ngModel)]="view.IsPresent"
+                  #IsPresent="ngModel" required ></span> -->
+                <!-- <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="view.IsPresent"
+                #IsPresent="ngModel" required></ui-switch> -->
+              <!-- </td> -->
+              <table style="width:100%">
+                <tbody>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Date</th>
+                </tr>
+                <tr *ngFor="let view of AttendanceviewReport">
+                  <td>{{view.StudentName}}</td>
+                  <td>
+                      <div *ngIf="view.IsPresent; else notShow">
+                          <img src="assets/images/attendance/P.png" height="24" width="24">
+                        </div>                        
+                        <ng-template #notShow>
+                            <img src="assets/images/attendance/A.png" height="24" width="24">
+                        </ng-template>
+                     </td>
+                </tr>     
+              </tbody>           
+              </table> 
+    <!-- <hr>
+    <ng2-smart-table [settings]="settings" [source]="AttendanceviewReport" >
+    </ng2-smart-table> -->
+  </app-card>
+</div>

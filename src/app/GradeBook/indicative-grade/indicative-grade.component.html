@@ -1,0 +1,101 @@
+<p>
+  indicative-grade works!
+</p>
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+  <app-card [title]="" [cardOptionBlock]="true">
+    <h5>Grade Book</h5>
+    <hr>
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assign Marks</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/consolidate-assessment/']"
+          href="javascript:">Consolidate Statements</a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:">Indicative Grade</a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-primary">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light" type="button">Assessments</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/assessment/']"
+        href="javascript:"> View Assessments</a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/consolidate-marks-card/']"
+        href="javascript:"> Consolidated Marks Card </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/indicative-grade/']"
+        href="javascript:"> View Indicative Grades </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" [routerLink]="['/GradeBook/subject-page/']">Subject Setup</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div ngbDropdown class="dropdown-info">
+      <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Assessment
+        Setup</button>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"> Assessment </a>
+        <a class="dropdown-item waves-light waves-effect" href="javascript:"
+          [routerLink]="['/GradeBook/assessment-head/']"> Assessment Head </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/grades/']"
+        href="javascript:"> Grades </a>
+        <a class="dropdown-item waves-light waves-effect" [routerLink]="['/GradeBook/remark/']"
+        href="javascript:"> Remark </a>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  </app-card>
+</div>
+
+<div class="col-sm-12">
+    <app-card [title]="IndicativeGrade">
+      <div class="mt-3">
+        <h5> Indicative Grade </h5>
+        <hr>
+      </div>
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="mt-3">
+              <div class="col-sm-12">
+                <select class="browser-default custom-select">
+                  <option value="1" disabled='true'> Select Batch </option>
+                  <option *ngFor="let assess of accountingyear" value={{assess.Id}}>{{assess.AcademicYear}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mobile-inputs">
+            <div class="mt-3">
+              <div class="col-sm-12">
+                <select class="browser-default custom-select">
+                  <option value="1" disabled='true'> Select Class </option>
+                  <option *ngFor="let assess of newclasssection" value={{assess.Id}}>{{assess.Name}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mobile-inputs">
+              <div class="mt-3">
+                  <div class="col-sm-12">
+                    <select class="browser-default custom-select">
+                      <option value="1" disabled='true'> Select Assessment </option>
+                      <option *ngFor="let assess of Assessments" value={{assess.Id}}>{{assess.Name}} </option>
+                    </select>
+                  </div>
+                </div>
+          </div>
+        </div>
+    </app-card>
+  </div>
+
+<div class="col-sm-12">
+  <app-card [title]="IndicativeGrade">
+    <div class="mt-3">
+      <h5> Indicative Grade </h5>
+      <hr>
+    </div>
+    <ng2-smart-table [settings]="settings" [source]="IndicativeGrade" (deleteConfirm)="onDeleteConfirm($event)"
+      (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+      (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </app-card>
+</div>

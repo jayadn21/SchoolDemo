@@ -1,0 +1,61 @@
+[{
+   "Name": "Accounting year",
+    "routerLink": "accounting-year",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Payment Methods",
+    "routerLink": "payment-method",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Fees Accounts",
+    "routerLink": "fees-accounts",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Fees Headers",
+    "routerLink": "fees-headers",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Fees Templates",
+    "routerLink": "fees-template",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Addon Facility Fees",
+    "routerLink": "facility-fees",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Assets",
+    "routerLink": "assets",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Charts",
+    "routerLink": "charts",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Opening Balance",
+    "routerLink": "opening-balance",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Expense Account",
+    "routerLink": "expense-account",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Expense Headers",
+    "routerLink": "expense-headers",
+    "ModuleName": "/Accounting/"
+},
+{
+    "Name": "Vendors",
+    "routerLink": "vendors",
+    "ModuleName": "/Accounting/"
+}
+]

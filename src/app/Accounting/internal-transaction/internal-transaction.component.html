@@ -1,0 +1,125 @@
+<p>
+  internal-transaction works!
+</p>
+
+<div class="page-body">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card [title]="InternalTransaction" [classHeader]="true">
+        <div class="mt-3">
+          <font size="3">
+            <h5>Internal Transaction</h5>
+          </font>
+        </div>
+        <div class="mt-3"></div>
+        <div style="text-align: center">
+          <div class="col-sm-6">
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="Date of Birth" name="dp" [(ngModel)]="model" ngbDatepicker
+                    #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                        style="font-size:24px" class="fa">&#xf073;</i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="1" disabled='true'> Select Date </option>
+                <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.TransactionDate}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="-1" disabled='true'> Choose Transction Type </option>
+                <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.TransactionTypeId}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="col-sm-6">
+              <select class="browser-default custom-select">
+                <option value="-1" disabled='true'> Choose Sub Divisionn </option>
+                <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.InstitutionId}}
+                </option>
+              </select>
+            </div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- <button type="button" class="btn btn-danger">Cancel</button> -->
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Account 1 </option>
+                    <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.IncomeAccount1Id}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Account 2 </option>
+                    <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.IncomeAccount2Id}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Description </option>
+                    <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.Descriptin}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3 mobile-inputs">
+              <div class="mt-3">
+                <div class="col-sm-12">
+                  <select class="browser-default custom-select">
+                    <option value="1" disabled='true'> Amount </option>
+                    <option *ngFor="let assess of Internaltransaction" value={{assess.Id}}>{{assess.Amount}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" type="submit" id="saveInternaltransaction"
+            (click)="saveInternaltransaction()" (click)="cleardata()">{{Buttontext}}</button>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <app-card [title]="InternalTransaction" [classHeader]="true">
+    <h5>Internal Transaction</h5>
+    <hr>
+    <ng2-smart-table [settings]="settings" [source]="Internaltransaction" (deleteConfirm)="onDeleteConfirm($event)"
+      (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)" (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </app-card>
+</div>

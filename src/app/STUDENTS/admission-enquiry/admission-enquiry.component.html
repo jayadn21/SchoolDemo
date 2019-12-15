@@ -1,0 +1,831 @@
+<!-- Application Form Button Start -->
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div>
+  <button class="btn btn-success" (click)="NewAdmissionForm('custom-modal-2')">New Application</button>
+</div>
+<jw-modal id="custom-modal-2">
+  <div class="app-modal-header">
+    <div style="text-align:center;">
+      <h4 class="modal-title"><b>New Application Form</b><button type="button" class="close basic-close"
+          (click)="closeModal1('custom-modal-2');">
+          <span aria-hidden="true">&times;</span>
+        </button></h4>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <h4 class="sub-title">
+          <font size="3">Application Details</font>
+        </h4>
+        <form #applicationForm="ngForm">
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="ApplicationNumber" placeholder="Application Number"
+                [(ngModel)]="application.ApplicationNumber" #ApplicationNumber="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <!-- <div class="md-form">
+                <label for="inputMDEx">Application Date</label>
+                <input type="date" id="inputMDEx" class="form-control" name="ApplicationDate"
+                  placeholder="Application Date" [(ngModel)]="application.ApplicationDate" #ApplicationDate="ngModel"
+                  required>
+                <span class="md-line"></span>
+              </div> -->
+              <div class="input-group">
+                <input type="text" onfocusin="(this.type='date')" onfocusout="(this.type='text')" class="form-control"
+                  placeholder="Application Date" name="dp" [(ngModel)]="applicatoinDateVar" ngbDatepicker
+                  #d="ngbDatepicker">
+                <!-- <div  class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                          <i class="fa">&#xf073;</i></button>
+                      </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="mt-3"></div>
+          <font size="3">Students Details</font>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" name="StudentName" placeholder="Student Name"
+              [(ngModel)]="application.StudentName" #Name="ngModel" required>
+            <span class="md-line"></span>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="FatherName" placeholder="Father's Name"
+                [(ngModel)]="application.FatherName" #FatherName="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="MotherName" placeholder="Mother's Name"
+                [(ngModel)]="application.MotherName" #MotherName="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <form class="form-inline">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                      #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                          style="font-size:24px" class="fa">&#xf073;</i></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div> -->
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="AdmissionNo" placeholder="Admission No."
+                [(ngModel)]="application.AdmissionNo" #AdmissionNo="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <form class="form-inline">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                      #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                          style="font-size:24px" class="fa">&#xf073;</i></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div> -->
+          <!-- <div class="mt-2"></div>
+          <label> Gender</label>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="application.Male" #Male="ngModel"
+                required></ui-switch>
+            </div> : Male
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="application.Female"
+                #Female="ngModel" required></ui-switch>
+            </div> : Female
+          </div> -->
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select class="form-control" name="Gender" [(ngModel)]="application.Gender">
+                <option value="-1" disabled="true">--Select Gender--</option>
+                <option value="true">Male</option>
+                <option value="false">Female</option>
+              </select>
+            </div>
+          </div>
+
+
+
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default" [(ngModel)]="application.ReligionId"
+                #ReligionId="ngModel" required>
+                <option value="opt1">2016-17</option>
+                <option value="opt2">2016 </option>
+                <option value="opt3">2015 </option>
+                <option value="opt4"> </option>
+                <option value="opt5">Type 5</option>
+                <option value="opt6">Type 6</option>
+                <option value="opt7">Type 7</option>
+                <option value="opt8">Type 8</option>
+              </select>
+            </div>
+          </div> -->
+        </form>
+      </div>
+      <div class="col-sm-4 mobile-inputs">
+        <h4 class="sub-title">
+          <font size="3">Student Contact Details</font>
+        </h4>
+        <form>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PhoneNumber" placeholder="Mobile Primary"
+                [(ngModel)]="application.PhoneNumber" #PhoneNumber="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PhoneNumber" placeholder="Mobile Secondary"
+                [(ngModel)]="application.AlternativePhoneNumber" #PhoneNumber="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PresentAddress" placeholder="Present Address"
+                [(ngModel)]="application.PresentAddress" #PresentAddress="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3"></div>
+          <font size="3">Academic Details</font>
+          <div class="col-sm-12">
+            <select class="form-control" [(ngModel)]="application.AcademicYearId" [ngModelOptions]="{standalone: true}"
+              #AcademicYearId="ngModel" required>
+              <option value="-1" disabled="true">--Select Academic Year--</option>
+              <option *ngFor="let acad of accountingyear" value={{acad.Id}}>{{acad.AcademicYear}} </option>
+            </select>
+          </div>
+
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select class="form-control" [(ngModel)]="application.ClassId" [ngModelOptions]="{standalone: true}"
+                #ClassSectionMediumId="ngModel" required>
+                <option value="-1" disabled="true">--Select Class--</option>
+                <option *ngFor="let cls of classList" value={{cls.Id}}>{{cls.Name}} </option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-lg-12">
+              <input type="text" class="form-control" name="OrganizationPreviouslyAttended"
+                placeholder="Organization Previously Attended" [(ngModel)]="application.PreviousOrganization"
+                #OrganizationPreviouslyAttended="ngModel" [ngModelOptions]="{standalone: true}">
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <angular2-multiselect name="AddonMultiSelect" [data]="itemList" [(ngModel)]="selectedAddOns"
+                [settings]="settings2" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+                (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+              </angular2-multiselect>
+            </div>
+          </div>
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PermanentAddress" placeholder="Permanent Address"
+                [(ngModel)]="application.PermanentAddress" #PermanentAddress="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div> -->
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="PhoneNumber" placeholder="Phone Number"
+                [(ngModel)]="application.PhoneNumber" #PhoneNumber="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="ParentId" placeholder="ParentId"
+                [(ngModel)]="application.ParentId" #ParentId="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="BloodGroup" placeholder="Blood Group"
+                [(ngModel)]="application.BloodGroup" #BloodGroup="ngModel" required>
+              <span class="md-line"></span>
+            </div>
+          </div> -->
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default"
+                [(ngModel)]="application.PhysicallyChallenged" #PhysicallyChallenged="ngModel" required>
+                <option value="opt1">Yes</option>
+                <option value="opt2">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default" [(ngModel)]="application.PatternId"
+                #PatternId="ngModel" required>
+                <option value="opt1">Yes</option>
+                <option value="opt2">No</option>
+              </select>
+            </div>
+          </div> -->
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default"
+                [(ngModel)]="application.CurrentClassSectionMediumId" #CurrentClassSectionMediumId="ngModel" required>
+                <option value="opt1">Yes</option>
+                <option value="opt2">No</option>
+                <option value="opt2">No</option>
+                <option value="opt2">No</option>
+                <option value="opt2">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default" [(ngModel)]="application.Active"
+                #Active="ngModel" required>
+                <option value="opt1">Yes</option>
+                <option value="opt2">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-lg-12">
+              <input type="text" class="form-control form-control-default" name="User Name" placeholder="UserName"
+                [(ngModel)]=" application.UserName" #UserName="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-lg-12">
+              <input type="text" class="form-control form-control-default" name="Alternative PhoneNumber"
+                placeholder="AlternativePhoneNumber" [(ngModel)]=" application.AlternativePhoneNumber"
+                #AlternativePhoneNumber="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-lg-12">
+              <input type="text" class="form-control form-control-default" name="Class Id" placeholder="ClassId"
+                [(ngModel)]=" application.ClassId" #ClassId="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default"
+                [(ngModel)]="application.ReservationCategoryId" #ReservationCategoryId="ngModel" required>
+                <option value="opt1">2016-17</option>
+                <option value="opt2">2016 </option>
+                <option value="opt3">2015 </option>
+                <option value="opt4"> </option>
+                <option value="opt5">Type 5</option>
+                <option value="opt6">Type 6</option>
+                <option value="opt7">Type 7</option>
+                <option value="opt8">Type 8</option>
+              </select>
+            </div>
+          </div>-->
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <h4 class="sub-title">
+          <font size="3">Application Fees</font>
+        </h4>
+        <div class="col-sm-12">
+          <select class="form-control" [(ngModel)]="application.ApplicationFeesAcademicYearId" #AcademicYearId="ngModel"
+            required>
+            <option value="-1" disabled="true">--Select Fees Academic Year--</option>
+            <option *ngFor="let acad of accountingyear" value={{acad.Id}}>{{acad.AcademicYear}} </option>
+          </select>
+          <div class="mt-3">
+            <select class="form-control" [(ngModel)]="application.IncomeAccountId" #IncomeAccountId="ngModel" required>
+              <option value="-1" disabled="true">--Select Income Account--</option>
+              <option *ngFor="let ia of incomeAccountList" value={{ia.Id}}>{{ia.AccountName}} </option>
+
+            </select>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-14">
+              <input type="text" class="form-control" name="Description" placeholder="Discription"
+                [(ngModel)]="application.Description" #Description="ngModel">
+              <span class="md-line"></span>
+            </div>
+          </div>
+          <div class="mt-3">
+            <select class="form-control" [(ngModel)]="application.FeesAccountId" #FeesAccountId="ngModel" required>
+              <option value="-1" disabled="true">--Select Fees Account--</option>
+              <option *ngFor="let fa of feesAccountList" value={{fa.Id}}>{{fa.AccountName}} </option>
+            </select>
+          </div>
+          <div class="mt-3">
+            <select name="select" class="form-control" [(ngModel)]="application.PaymentMethodId"
+              #PaymentMethodId="ngModel" required>
+              <option value="-1" disabled="true">--Select Payment Method--</option>
+              <option *ngFor="let pm of paymentMethodList" value={{pm.Id}}>{{pm.Name}} </option>
+            </select>
+          </div>
+          <div class="mt-3">
+            <div class="col-sm-14">
+              <input type="text" class="form-control" name="Amount" placeholder="Enter Amount"
+                [(ngModel)]=" application.Amount" #Amount="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+          </div>
+
+          <!-- <div class="mt-3">
+            <div class="col-sm-12">
+              <select name="select" class="form-control form-control-default" [(ngModel)]="application.MediumId"
+                #MediumId="ngModel" required>
+                <option value="opt1">2016-17</option>
+                <option value="opt2">2016 </option>
+                <option value="opt3">2015 </option>
+                <option value="opt4"> </option>
+                <option value="opt5">Type 5</option>
+                <option value="opt6">Type 6</option>
+                <option value="opt7">Type 7</option>
+                <option value="opt8">Type 8</option>
+              </select>
+            </div>
+          </div> -->
+          <div class="mt-3"></div>
+          <font size="3">Notification Option</font>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="application.Welcome"
+                #Welcome="ngModel" required></ui-switch>
+            </div> : Welcome SMS
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3"></div>
+    <div style="text-align:center;">
+      <button type="submit" id="UpdateApllicationButton" (click)="setApplicationForm('custom-modal-2')"
+        class="btn btn-primary" placement="bottom">Submit</button> &nbsp;&nbsp;&nbsp;
+      <button type="submit" id="closeapplicationPopup" class="btn btn-danger" placement="bottom"
+        (click)="closeModal1('custom-modal-2')">Cancel</button>
+    </div>
+  </div>
+</jw-modal>
+
+
+<!-- <app-card>
+  <button type="button" class="btn btn-primary" id="admissionPopup"
+    (click)="admissionEnquiryModal('admissionEnquiry')">New Application</button>
+  <app-modal-animation [modalID]="'admissionEnquiry'" #modalLarge [modalClass]="'modal-lg'">
+    <div class="app-modal-body">
+
+    </div>
+  </app-modal-animation>
+</app-card> -->
+<!-- Application Form Button End -->
+<div class="mt-3"></div>
+
+<div class="page-body">
+  <div class="row">
+    <div class="col-xl-12">
+      <app-card>
+        <ng2-smart-table class="table-responsive" [settings]="settings" [source]="applicationFormsList"
+          (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+          (custom)="onCustomAction($event)">
+        </ng2-smart-table>
+
+      </app-card>
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<!-- FullScreen Modal Popup Start -->
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<jw-modal id="custom-modal-1">
+  <div class="app-modal-header">
+    <div style="text-align:center;">
+      <h4 class="modal-title"><b>Make an Admission</b><button type="button" class="close basic-close"
+          (click)="closeModal('custom-modal-1');">
+          <span aria-hidden="true">&times;</span>
+        </button></h4>
+
+      <hr>
+    </div>
+    <div class="app-modal-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <b> Basic Information</b>
+          <form>
+            <div class="col-lg-14">
+              <input type="text" class="form-control form-control-default" name="Name" placeholder="Student Name"
+                [(ngModel)]="admission.StudentName" #Name="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+            <div class="mt-3">
+              <div class="col-sm-14">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="Date of Birth" name="dp" [(ngModel)]="ApplicationDate"
+                        ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" (click)="testDate()"
+                          type="button"><i style="font-size:24px" class="fa">&#xf073;</i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="PlaceofBirth"
+                  placeholder="Place of Birth" [(ngModel)]="admission.PlaceofBirth" #PlaceofBirth="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="AadhaarNumber"
+                  placeholder="Aadhaar Number" [(ngModel)]="admission.AadhaarNumber" #AadhaarNumber="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="Nationality"
+                  placeholder="Nationality" [(ngModel)]="admission.Nationality" #Nationality="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="MotherTongue"
+                  placeholder="Mother Tongue" [(ngModel)]="admission.MotherTongue" #MotherTongue="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="Religion" placeholder="Religion"
+                  [(ngModel)]="admission.Religion" #Religion="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="Caste" placeholder="Caste"
+                  [(ngModel)]="admission.Caste" #Caste="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <font size="3">Student Quota</font>
+              <select name="select" class="form-control" [(ngModel)]="admission.StudentQuotaId" #quota="ngModel"
+                required>
+                <option value="-1" disabled='true'>--Select Student Quota--</option>
+                <option *ngFor="let assess of subjectCombination" value={{assess.Id}}>{{assess.Name}} </option>
+              </select>
+            </div>
+            <div class="mt-3">
+              <font size="3"><b>--Select Gender--</b></font><br>
+              <div class="mt-2"></div>
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.Male" #Male="ngModel"
+                [ngModelOptions]="{standalone: true}" required></ui-switch>
+              <font size="3"><b>: Male</b></font><br>
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.FeMale"
+                #FeMale="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              <font size="3"><b>: Female</b></font>
+            </div>
+            <div class="mt-3">
+            </div>
+            <b>Student Contact Details</b>
+            <div class="col-lg-14">
+              <input type="text" class="form-control form-control-default" name="Mobile" placeholder="Mobile"
+                [(ngModel)]="admission.Mobile" #Mobile="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="Email" placeholder="Email"
+                  [(ngModel)]="admission.Email" #Email="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="PresentAddress"
+                  placeholder="Present Address" [(ngModel)]="admission.PresentAddress" #PresentAddress="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="PermanentAddress"
+                  placeholder="Permanent Address" [(ngModel)]="admission.PermanentAddress" #PermanentAddress="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-4 mobile-inputs">
+          <form>
+            <b>Parents Information</b>
+            <div class="col-lg-14">
+              <input type="text" class="form-control form-control-default" name="FatherName" placeholder="Father's Name"
+                [(ngModel)]="admission.FatherName" #FatherName="ngModel" [ngModelOptions]="{standalone: true}" required>
+              <span class="md-line"></span>
+            </div>
+
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="MotherName"
+                  placeholder="Mother's Name" [(ngModel)]="admission.MotherName" #MotherName="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="PrimaryMobile"
+                  placeholder="Primary Mobile" [(ngModel)]="admission.PrimaryMobile" #PrimaryMobile="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="SecondaryMobile"
+                  placeholder="Secondary Mobile" [(ngModel)]="admission.SecondaryMobile" #SecondaryMobile="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="Email1" placeholder="Email"
+                  [(ngModel)]="admission.Email1" #Email1="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3"></div>
+            <b>Academic Information</b>
+            <div class="col-sm-14">
+              <div class="md-form">
+                <input type="date" id="inputMDEx" class="form-control" name="AdmissionDate" placeholder="Admission Date"
+                  [(ngModel)]="admission.AdmissionDate" #AdmissionDate="ngModel" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="OrganizationPreviouslyAttended"
+                  placeholder="Organization Previously Attended" [(ngModel)]="admission.OrganizationPreviouslyAttended"
+                  #OrganizationPreviouslyAttended="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="PreviousOrganizationTCNO"
+                  placeholder="Previous Organization TC NO" [(ngModel)]="admission.PreviousOrganizationTCNO"
+                  #PreviousOrganizationTCNO="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="StudentUID"
+                  placeholder="Student U-ID" [(ngModel)]="admission.StudentUID" #StudentUID="ngModel"
+                  [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="RollNumber" placeholder="Roll Number"
+                  [(ngModel)]="admission.RollNumber" #RollNumber="ngModel" [ngModelOptions]="{standalone: true}"
+                  required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <select name="select" class="form-control" [(ngModel)]="admission.AcademicYearId" #session="ngModel"
+                required>
+                <option value="-1" disabled='true'>--Select Academic Year--</option>
+                <option *ngFor="let mark of accountingyear" value={{mark.Id}}>{{mark.AcademicYear}} </option>
+              </select>
+            </div>
+            <div class="mt-3">
+              <select name="select" class="form-control" [(ngModel)]="admission.class" #class="ngModel" required>
+                <option value="-1" disabled='true'>--Select Class Section--</option>
+                <option *ngFor="let cs of classsectionService" value={{cs.Id}}>{{cs.Name}} </option>
+              </select>
+            </div>
+            <div class="mt-3">
+              <div class="col-lg-14">
+                <input type="text" class="form-control form-control-default" name="date" placeholder="2/2018-19"
+                  [(ngModel)]="admission.date" #date="ngModel" [ngModelOptions]="{standalone: true}" required>
+                <span class="md-line"></span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <select name="select" class="form-control" [(ngModel)]="admission.paymentOption" #paymentOption="ngModel"
+                required>
+                <option value="-1" disabled='true'>--Choose Category--</option>
+                <option *ngFor="let acs of admissionCategories" value={{acs.Id}}>{{acs.Name}} </option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-4 mobile-inputs">
+          <b>Custom Fields </b>
+          <div>
+            <div *ngFor="let field of customField" class="form-control">
+              <input type="text" [name]="field.Id" class="form-control" [placeholder]="field.Name" [(ngModel)]="field.FieldValue"/>
+            </div>
+          </div>
+          <div class="mt-3"></div>
+          <div class="mt-3">
+            <font size="3">Select Blood Group</font>
+            <select name="select" class="form-control" [(ngModel)]="admission.BloodGroup" #bloodGroup="ngModel"
+              required>
+              <option value="-1">-- Select Blood Group--</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+
+            </select>
+          </div>
+          <div class="mt-3"></div>
+          <!-- <font size="3"><b>Student Quota</b></font>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.STATEBOARD"
+                #STATEBOARD="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: STATE BOARD
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.ICSE" #ICSE="ngModel"
+                [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: ICSE
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.CBSE" #CBSE="ngModel"
+                [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: CBSE
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.PCMB" #PCMB="ngModel"
+                [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: PCMB
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.PCMC" #PCMC="ngModel"
+                [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: PCMC
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.MONTESSORI"
+                #MONTESSORI="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+            </div>: MONTESSORI
+          </div>-->
+          <div class="mt-3">
+            <font size="3"><b>Add-on-Facilities</b></font>
+            <angular2-multiselect name="AdmissionAddOns" [data]="itemList" [(ngModel)]="selectedAddOns"
+              [settings]="settings2" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+              (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+            </angular2-multiselect>
+          </div>
+          <!--Assign Fees-->
+          <div class="mt-3">
+            <font size="3"><b>Assign Fees</b></font>
+            <div class="mt-3">
+                <select name="select" class="form-control" [(ngModel)]="admission.StudentQuotaId" #quota="ngModel"
+                  required>
+                  <option value="-1" disabled='true'>--Select Assign Fees--</option>
+                  <!-- <option *ngFor="let assess of Assignfee" value={{assess.FeesTemplateId}}>{{assess.TotalFees}} </option> -->
+                  <option *ngFor="let assess of Assignfee" value={{assess.FeesTemplateId}}>{{assess.Name}} Rs. {{assess.TotalFees}} </option>
+                </select>
+              </div>
+            <!-- <div class="col-sm-12">
+              <angular2-multiselect name="dropdown" [data]="dropdownList" [(ngModel)]="selectedItems1"
+                [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                (onDeSelect)="OnItemDeSelect($event,user.id)" (onSelectAll)="onSelectAll($event)"
+                (onDeSelectAll)="onDeSelectAll($event)">
+              </angular2-multiselect>
+            </div> -->
+            <div class="mt-3">
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.addOnFacilities"
+                  #addOnFacilities="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div>
+              <font size="3"><b>
+                  <pre>: Merge AddOn Facility Fees and
+  Organisation Fees </pre></b></font>
+            </div>
+          </div>
+          <font size="3">Notifications Options</font>
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.welcomeSMS"
+                  #welcomeSMS="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div><b>: Welcome SMS</b>
+            </div>
+            <div class="row">
+              <div class="col-auto">
+                <ui-switch color="#4680ff" switchColor="#fff" size="small" [(ngModel)]="admission.parentApp"
+                  #parentApp="ngModel" [ngModelOptions]="{standalone: true}" required></ui-switch>
+              </div><b>: Login Details For Parent App</b>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <div style="text-align:center;">
+        <button type="submit" id="submitApplication" (click)="submitApplication('custom-modal-1')"
+          class="btn btn-primary"> Submit</button> &nbsp;&nbsp;
+        <button type="submit" id="closeApplication" (click)="clearAndCloseMakeAdmissionForm()" class="btn btn-success">
+          Cancel</button>
+      </div>
+    </div>
+  </div>
+</jw-modal>
+<!-- FullScreen Modal Popup End -->
+<!-- <button (click)="exportAsXLSX()">
+  <i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+<table>
+  <tr>
+    <td>Eid</td>
+    <td>Ename</td>
+    <td>Esal</td>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td>{{item.eid}}</td>
+    <td>{{item.ename}}</td>
+    <td>{{item.esal}}</td>
+  </tr>
+</table> -->
+
+<!-- Export PDF -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let img of images;let i=index">
+      <img id="img{{i}}" class="img-fluid" crossOrigin="Anonymous" [src]="img.url">
+    </div>
+    <div class="col-md-12 mt-3">
+      <button (click)="download()" class="btn btn-primary">Download PDF</button>
+    </div>
+  </div>
+</div> -->

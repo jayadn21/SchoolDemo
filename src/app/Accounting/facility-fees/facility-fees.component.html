@@ -1,0 +1,148 @@
+<ngx-spinner type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="col-md-12 col-lg-12">
+    <app-card [title]=""[cardOptionBlock]="true">
+        <h5>Accounting (Addon Facility Fees)</h5>
+        <hr>
+        <div ngbDropdown class="dropdown-primary">
+            <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Fees Management</button>
+            <div ngbDropdownMenu>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Statements</a>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Direct Payments</a>
+               <!-- <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>  -->
+            </div>
+          </div>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+          <div ngbDropdown class="dropdown-success">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Transactions</button>
+              <div ngbDropdownMenu>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Indirect Income</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Expense</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Bills</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Internal Transactions</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Journal Transactions</a>
+              </div>
+            </div>
+
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+          <button class="btn btn-success ">Payroll</button>
+
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+            <div ngbDropdown class="dropdown-info">
+              <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Reports</button>
+              <div ngbDropdownMenu>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Fees Reports</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Profit and Loss</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Balance Sheet</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Trial Balance</a>
+              </div>
+            </div>
+
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+            <div ngbDropdown class="dropdown-warning">
+                <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Settings</button>
+                <div ngbDropdownMenu>
+                <div *ngFor="let menuItem of accountingMenu">
+                  <a class="dropdown-item waves-light waves-effect" [routerLink]="[menuItem.ModuleName,menuItem.routerLink]"
+                   href="javascript:">{{menuItem.Name}}</a>
+                  </div>
+                </div>
+              </div>
+    </app-card>
+  </div>
+<div class="row">
+   <div class="col-sm-6">
+    <app-card >
+      <div style="text-align: center">
+      <h3>{{pageTitle}}</h3>
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <select style="width:500px;" name="AcademicYear" placeholder="Select one"
+        [(ngModel)]="newFacilityFee.AddOnFacilityId" required>
+            <option value="" disabled selected>Select Facility</option>
+
+              <option *ngFor="let fac of facilities" value={{fac.Id}}>{{fac.Name}} </option>
+        </select>
+    </div>
+    <br>
+    <div class="row">
+      <select style="width:500px;" name="FeesAmount" placeholder="Select one"
+      [(ngModel)]="newFacilityFee.FeesAccountId"
+            #FeesAmount="ngModel" required>
+          <option value="" disabled selected>Select Fees Amount</option>
+
+            <option *ngFor="let fac of feesaccounts" value={{fac.Id}}>{{fac.AccountName}} </option>
+      </select>
+    </div>
+    <br>
+
+    <div class="row">
+      <select style="width:500px;" name="Name" placeholder="Select one"
+      [(ngModel)]="newFacilityFee.FeesHeaderId"
+            #Name="ngModel" required>
+          <option value="" disabled selected>Select one</option>
+
+            <option *ngFor="let fac of feesheaders" value={{fac.Id}}>{{fac.Name}} </option>
+      </select>
+    </div>
+    <br>
+
+    <div class="row">
+      <select style="width:500px;" name="Name" placeholder="Select one"
+      [(ngModel)]="newFacilityFee.AcademicYearId"
+            #Name="ngModel" required>
+          <option value="" disabled selected>Select one</option>
+          <option *ngFor="let fac of accountingyears" value={{fac.Id}}>{{fac.AcademicYear}} </option>
+      </select>
+    </div>
+    <br>
+
+    <div class="row">
+        <input style="width:500px;" type="number"  id= "facilityfee" name="lastname" placeholder="Input Fees"
+        [(ngModel)]="newFacilityFee.FeesAmount"  #Name="ngModel" required>
+    </div>
+    <br>
+    <br>
+      <div style="text-align:center">
+          <button type="button" class="btn btn-primary" (click)="savefacilityfee()">{{buttonText}}</button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-danger" >Cancel</button>
+
+      </div>
+    </app-card>
+  </div>
+
+  <div class="col-sm-6">
+    <app-card [title]="facilityfees" [classHeader]="true">
+        <div style="text-align: center">
+          <ng2-smart-table [settings]="settings"
+          [source]="facilityFeeForGrid" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+          (createConfirm)="onCreateConfirm($event)"
+          (custom)="onCustomAction($event)"></ng2-smart-table>
+        </div>
+    </app-card>
+  </div>
+</div>
+
+
