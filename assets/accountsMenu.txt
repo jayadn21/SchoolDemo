@@ -1,0 +1,103 @@
+<div class="col-md-12 col-lg-12">
+        <app-card title=""[cardOptionBlock]="true">
+            <h5>Accounting (Fees Management)</h5>
+            <hr>
+          <div ngbDropdown class="dropdown-primary">
+              <button ngbDropdownToggle class="btn btn-primary waves-effect waves-light " type="button">Fees Management</button>
+              <div ngbDropdownMenu>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Statements</a>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Direct Payments</a>
+                 <!-- <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item waves-light waves-effect" href="javascript:">Something else here</a>  -->
+              </div>
+            </div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+            <div ngbDropdown class="dropdown-success">
+                <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Transactions</button>
+                <div ngbDropdownMenu>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Indirect Income</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Expense</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Bills</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Internal Transactions</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Journal Transactions</a>
+                </div>
+              </div>
+
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+            <button class="btn btn-success ">Payroll</button>
+
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+              <div ngbDropdown class="dropdown-info">
+                <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Reports</button>
+                <div ngbDropdownMenu>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Fees Reports</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Profit and Loss</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Balance Sheet</a>
+                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Trial Balance</a>
+                </div>
+              </div>
+
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+              <div ngbDropdown class="dropdown-warning">
+                  <button ngbDropdownToggle class="btn btn-success waves-effect waves-light " type="button">Settings</button>
+                  <div ngbDropdownMenu>
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/accounting-year/']"
+                     href="javascript:">Accounting year</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/payment-method/']"
+                    href="javascript:">Payment Methods</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/fees-accounts/']"
+                    href="javascript:">Fees Accounts</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/fees-headers/']"
+                    href="javascript:">Fees Headers</a>
+
+                    <a class="dropdown-item waves-light waves-effect"  [routerLink]="['/Accounting/fees-template/']"
+                    href="javascript:">Fees Templates</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/facility-fees/']"
+                    href="javascript:">Addon Facility Fees</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/assets/']"
+                    href="javascript:">Assets</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/charts/']"
+                    href="javascript:">Charts</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/opening-balance/']"
+                    href="javascript:">Opening Balnce</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/expense-account/']"
+                    href="javascript:">Expense Account</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/expense-headers/']"
+                    href="javascript:">Expense Headers</a>
+
+                    <a class="dropdown-item waves-light waves-effect" [routerLink]="['/Accounting/vendors/']"
+                    href="javascript:">Vendors</a>
+
+                  </div>
+                </div>
+
+
+
+      </app-card>
+    </div>
